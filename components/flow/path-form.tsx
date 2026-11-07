@@ -1,0 +1,161 @@
+"use client";
+
+import { RequestForm, type RequestField } from "@/components/flow/request-form";
+
+const devices = ["Laptop", "Desktop / CPU", "Server", "TV", "Printer", "Scanner", "Switch", "Faulty cables"].map((label) => ({
+  value: label,
+  label,
+}));
+
+const desks = [
+  { value: "Juja", label: "Juja" },
+  { value: "Nairobi", label: "Nairobi" },
+];
+
+type PathFormKind = "donate" | "dispose" | "upgrade" | "ask";
+
+const forms: Record<
+  PathFormKind,
+  {
+    submitLabel: string;
+    doneTitle: string;
+    doneText: string;
+    fields: readonly RequestField[];
+    buildMessage: (values: Record<string, string>) => string;
+  }
+> = {
+  donate: {
+    submitLabel: "Prepare the donation note",
+    doneTitle: "The donation note is ready.",
+    doneText: "Send it on WhatsApp. We confirm whether you will bring it to Juja or we will collect it. Working donations are collected without a charge.",
+    fields: [
+      { name: "name", label: "Your name", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
+      { name: "device", label: "What are you donating?", type: "select", required: true, options: devices },
+      {
+        name: "condition",
+        label: "Condition",
+        type: "select",
+        required: true,
+        options: [
+          { value: "Working", label: "Working" },
+          { value: "Repairable", label: "Repairable" },
+          { value: "Company lot of working machines", label: "Company lot of working machines" },
+        ],
+      },
+      { name: "desk", label: "Desk", type: "select", required: true, options: desks },
+      { name: "note", label: "Anything the bench should know", type: "textarea" },
+    ],
+    buildMessage: (values) => {
+      const lines = [
+        "Hello Josachi, I would like to donate a device.",
+        "",
+        `Name: ${values.name?.trim()}`,
+        `WhatsApp: ${values.phone?.trim()}`,
+        `What it is: ${values.device}`,
+        `Condition: ${values.condition}`,
+        `I can bring it to: ${values.desk}`,
+      ];
+      if (values.note?.trim()) lines.push(`Note: ${values.note.trim()}`);
+      return lines.join("\n");
+    },
+  },
+  dispose: {
+    submitLabel: "Prepare the collection note",
+    doneTitle: "The collection note is ready.",
+    doneText: "Send it on WhatsApp. Dead loads are charged for collection. We travel for 20 pieces or more, and the charge is agreed before the visit.",
+    fields: [
+      { name: "name", label: "Your name", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
+      {
+        name: "place",
+        label: "Home or organisation",
+        type: "select",
+        required: true,
+        options: [
+          { value: "Home", label: "Home" },
+          { value: "Organisation", label: "Organisation" },
+        ],
+      },
+      { name: "what", label: "Roughly what is leaving", type: "textarea", required: true },
+      { name: "town", label: "Pickup town", type: "text", required: true, placeholder: "Juja, Nairobi, or another town" },
+      { name: "access", label: "Stairs, gate, or access notes", type: "textarea" },
+    ],
+    buildMessage: (values) => {
+      const lines = [
+        "Hello Josachi, I need a paid collection of dead electronics for disposal.",
+        "",
+        `Name: ${values.name?.trim()}`,
+        `WhatsApp: ${values.phone?.trim()}`,
+        `Home or organisation: ${values.place}`,
+        `Roughly what is there: ${values.what?.trim()}`,
+        `Pickup from: ${values.town?.trim()}`,
+      ];
+      if (values.access?.trim()) lines.push(`Access: ${values.access.trim()}`);
+      return lines.join("\n");
+    },
+  },
+  upgrade: {
+    submitLabel: "Prepare the upgrade note",
+    doneTitle: "The upgrade note is ready.",
+    doneText: "Send it on WhatsApp. Old working machines can be donated, or released for a small fee. We travel for 10 working pieces. A PDF inventory can follow in the chat.",
+    fields: [
+      { name: "name", label: "Your name", type: "text", required: true },
+      { name: "organisation", label: "Organisation", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
+      { name: "count", label: "How many machines", type: "text", required: true },
+      {
+        name: "kind",
+        label: "What you run today",
+        type: "select",
+        required: true,
+        options: [
+          { value: "Laptops", label: "Laptops" },
+          { value: "Desktops", label: "Desktops" },
+          { value: "Both", label: "Laptops and desktops" },
+        ],
+      },
+      { name: "note", label: "What the machines are used for", type: "textarea" },
+    ],
+    buildMessage: (values) =>
+      [
+        "Hello Josachi, we have old-generation working computers to donate or release for a small fee.",
+        "",
+        `Name: ${values.name?.trim()}`,
+        `Organisation: ${values.organisation?.trim()}`,
+        `WhatsApp: ${values.phone?.trim()}`,
+        `How many machines: ${values.count?.trim()}`,
+        `What they are: ${values.kind}`,
+        values.note?.trim() ? `Used for: ${values.note.trim()}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+  },
+  ask: {
+    submitLabel: "Prepare the request",
+    doneTitle: "The request is ready.",
+    doneText: "Send it on WhatsApp. Placements go to less privileged schools.",
+    fields: [
+      { name: "name", label: "Your name", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
+      { name: "who", label: "School", type: "text", required: true },
+      { name: "need", label: "What the computers need to do", type: "textarea", required: true },
+      { name: "town", label: "Town", type: "text", required: true },
+    ],
+    buildMessage: (values) =>
+      [
+        "Hello Josachi, I am asking about computers for a less privileged school.",
+        "",
+        `Name: ${values.name?.trim()}`,
+        `WhatsApp: ${values.phone?.trim()}`,
+        `School: ${values.who?.trim()}`,
+        `What the computer needs to do: ${values.need?.trim()}`,
+        `Town: ${values.town?.trim()}`,
+      ].join("\n"),
+  },
+};
+
+export function PathForm({ kind }: { kind: PathFormKind }) {
+  const form = forms[kind];
+  return <RequestForm {...form} />;
+}
