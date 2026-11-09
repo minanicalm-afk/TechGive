@@ -10,18 +10,18 @@ import { messages, nav } from "@/lib/site";
 import { shell } from "@/lib/ui";
 
 const finalServices = [
-  { href: "#donations", label: "Donations" },
-  { href: "#recycling", label: "Collection for Recycling" },
-  { href: "#upgrades", label: "System Upgrades" },
-  { href: "#buy", label: "Buy from Us" },
-  { href: "#repair", label: "Repair Services" },
+  { href: "/home4#donations", label: "Donations" },
+  { href: "/home4#recycling", label: "Collection for Recycling" },
+  { href: "/home4#upgrades", label: "System Upgrades" },
+  { href: "/home4#buy", label: "Buy from Us" },
+  { href: "/home4#repair", label: "Repair Services" },
 ] as const;
 
 const finalNav = [
-  { href: "#impact", label: "Impact" },
-  { href: "#about", label: "About" },
-  { href: "#how", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/home4#impact", label: "Impact" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/home4/contact", label: "Contact" },
 ] as const;
 
 function subscribe(onStoreChange: () => void) {
@@ -52,9 +52,10 @@ export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const pendingScroll = useRef<string | null>(null);
+  const onFinal =
+    pathname === "/home4" || pathname === "/about" || pathname === "/faq" || pathname === "/home4/contact";
   const solid = scrolled || open;
-  const onLanding = pathname === "/" || pathname === "/home4";
-  const onFinal = pathname === "/home4";
+  const onLanding = pathname === "/" || onFinal;
   const linkClass = solid ? "text-ink-soft hover:text-ink" : "text-cream/80 hover:text-cream";
 
   useEffect(() => {
@@ -103,8 +104,8 @@ export function Header() {
           {onFinal ? (
             <Link
               href="/home4"
-              aria-current="page"
-              className={`text-sm font-medium underline decoration-2 underline-offset-8 ${solid ? "text-[#16a34a]" : "text-emerald-300"}`}
+              aria-current={pathname === "/home4" ? "page" : undefined}
+              className={`text-sm font-medium ${pathname === "/home4" ? "underline decoration-2 underline-offset-8" : ""} ${solid ? "text-[#16a34a]" : "text-emerald-300"}`}
             >
               Home
             </Link>
@@ -146,7 +147,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={current ? "page" : undefined}
-                className={`text-sm font-medium ${current ? (solid ? "text-copper" : "text-copper-soft") : linkClass}`}
+                className={`text-sm font-medium ${current ? (onFinal ? "text-[#16a34a]" : solid ? "text-copper" : "text-copper-soft") : linkClass}`}
               >
                 {item.label}
               </Link>
@@ -157,7 +158,7 @@ export function Header() {
         <div className="hidden lg:block">
           {onFinal ? (
             <a
-              href="#get-started"
+              href="/home4#get-started"
               className="inline-flex items-center gap-2 rounded-full bg-[#22c55e] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_18px_-10px_rgba(22,163,74,0.9)] hover:bg-[#16a34a]"
             >
               Get Involved <Arrow />
@@ -244,7 +245,7 @@ export function Header() {
             <div className="pt-5">
               {onFinal ? (
                 <a
-                  href="#get-started"
+                  href="/home4#get-started"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#22c55e] px-4 py-3 text-sm font-semibold text-white"
                   onClick={() => setOpen(false)}
                 >

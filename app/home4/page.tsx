@@ -4,6 +4,7 @@ import { FinalHow } from "@/components/final-how";
 import { FinalImpact } from "@/components/final-impact";
 import { FinalServices } from "@/components/final-services";
 import { Hero } from "@/components/hero";
+import { Home4Footer } from "@/components/home4-footer";
 
 export const metadata: Metadata = {
   title: { absolute: "TechGive — Home 4" },
@@ -13,12 +14,15 @@ export const metadata: Metadata = {
 
 export default function Home4Page() {
   return (
-    <main id="main">
-      <Hero image="/final-hero.jpg" />
-      <FinalServices />
-      <FinalImpact />
-      <FinalHow />
-      <FinalCta />
-    </main>
+    <>
+      <main id="main">
+        <Hero image="/final-hero.jpg" />
+        <FinalServices />
+        <FinalImpact />
+        <FinalHow />
+        <FinalCta />
+      </main>
+      <Home4Footer />
+    </>
   );
 }

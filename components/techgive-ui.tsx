@@ -290,16 +290,18 @@ export function TechFooter({
   homeHref,
   columns,
   wide,
+  page,
 }: {
   homeHref: string;
   columns: readonly { title: string; items: readonly (readonly [string, string])[] }[];
   wide?: boolean;
+  page?: boolean;
 }) {
   return (
     <footer id="contact" className="relative overflow-hidden bg-[#071611] text-white">
       <Leaf className="pointer-events-none absolute -bottom-2 left-0 h-32 w-36 text-[#14532d]" />
       <Leaf className="pointer-events-none absolute right-0 -bottom-2 h-32 w-36 -scale-x-100 text-[#14532d]" />
-      <div className={`relative mx-auto grid w-full max-w-6xl gap-10 px-5 py-12 sm:grid-cols-2 ${wide ? "lg:grid-cols-5" : "lg:grid-cols-4"}`}>
+      <div className={`relative mx-auto grid w-full gap-10 py-12 sm:grid-cols-2 ${page ? "max-w-[96rem] px-4 sm:px-6 lg:grid-cols-5" : `max-w-6xl px-5 ${wide ? "lg:grid-cols-5" : "lg:grid-cols-4"}`}`}>
         <Link href={homeHref} className="flex items-center gap-2.5 self-start">
           <Mark />
           <span>
