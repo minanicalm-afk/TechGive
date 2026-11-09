@@ -9,12 +9,18 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   if (pathname === "/home" || pathname === "/home1" || pathname === "/home2" || pathname === "/home3") return children;
 
+  const heroOnly = pathname === "/home4";
+
   return (
     <>
       <Header />
       {children}
-      <Footer />
-      <WhatsAppButton />
+      {heroOnly ? null : (
+        <>
+          <Footer />
+          <WhatsAppButton />
+        </>
+      )}
     </>
   );
 }
