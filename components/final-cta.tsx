@@ -27,7 +27,7 @@ export function FinalCta() {
           </div>
 
           <Link
-            href="/donate"
+            href="/donations#note"
             className="relative z-10 inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#78d93d] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#6bcf34]"
           >
             Get Started <Arrow />

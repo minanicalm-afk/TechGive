@@ -4,7 +4,7 @@ const paths = [
   {
     title: "Donate",
     summary: "A working or repairable computer is repaired, then given to a less privileged school.",
-    href: "/donate",
+    href: "/donations#note",
     cta: "Donate a device",
     steps: [
       "Tell us the machine, and whether it powers on. A missing charger is fine.",

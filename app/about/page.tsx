@@ -71,7 +71,7 @@ export default function AboutPage() {
           text="TechGive is the Josachi desk in Juja. We collect electronics from people, companies, and institutions, then put the repairable ones back to work."
         >
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/donate" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
+            <Link href="/donations#note" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
               Donate a device
             </Link>
             <Link href="/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">

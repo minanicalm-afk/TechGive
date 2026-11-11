@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
       { source: "/home4/sell", destination: "/sell", permanent: false },
       { source: "/home4/buy", destination: "/sell", permanent: false },
       { source: "/buy", destination: "/sell", permanent: false },
+      { source: "/donate", destination: "/donations", permanent: false },
     ];
   },
   cacheComponents: true,

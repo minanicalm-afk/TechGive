@@ -13,7 +13,7 @@ const features = [
 ] as const;
 
 const facts = [
-  { href: "/donate", label: "Donate", value: "Repaired, then given to less privileged schools" },
+  { href: "/donations", label: "Donate", value: "Repaired, then given to less privileged schools" },
   { href: "/sell", label: "Sell", value: "A range, confirmed after we inspect the item" },
   { href: "/dispose", label: "Dispose", value: "Dead equipment collected for a fee" },
   { href: "/upgrade", label: "Upgrade", value: "Old working machines donated, or released for a small fee" },
@@ -94,7 +94,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
                 : "mt-5 font-serif text-[3.15rem] leading-[0.98] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.4rem]"
             }
           >
-            Unused computers still have{" "}
+            Unused electronics still have{" "}
             <em className="font-medium text-copper-soft italic">work to do.</em>
           </h1>
           <p
@@ -111,7 +111,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
           <div className={`mt-8 flex flex-col gap-3 sm:flex-row ${scenic ? "items-stretch sm:items-center" : "items-center justify-center"}`}>
             {scenic ? (
               <>
-                <Link href="/donate" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#22c55e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#16a34a]">
+                <Link href="/donations#note" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#22c55e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#16a34a]">
                   Donate Devices
                   <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
@@ -126,7 +126,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
               </>
             ) : (
               <>
-                <Button href="/donate" variant="cream">
+                <Button href="/donations#note" variant="cream">
                   Donate a device
                 </Button>
                 <Button href="/sell" variant="ghost-light">

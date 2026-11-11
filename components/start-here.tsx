@@ -7,7 +7,7 @@ const paths = [
     title: "Donate",
     copy: "A working or repairable computer for less privileged schools. A missing charger is fine.",
     cta: "Donate",
-    href: "/donate",
+    href: "/donations",
     featured: true,
   },
   {
