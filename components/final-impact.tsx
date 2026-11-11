@@ -26,7 +26,7 @@ export function FinalImpact() {
               <span className="h-0.5 w-12 bg-[#15803d]" aria-hidden="true" />
               OUR IMPACT
             </p>
-            <h2 className="mt-4 max-w-xl text-4xl font-extrabold leading-[0.95] tracking-tight text-[#0c2340] sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 max-w-xl text-4xl font-extrabold leading-[0.95] tracking-tight text-[#0b1b16] sm:text-5xl lg:text-6xl">
               Together, We Make a
               <span className="mt-1 block text-[#15803d] underline decoration-[#16a34a] decoration-[3px] underline-offset-[8px]">
                 Difference
@@ -46,7 +46,7 @@ export function FinalImpact() {
                     <StatIcon name={stat.icon} />
                   </span>
                   <span>
-                    <span className="block text-2xl font-extrabold tracking-tight text-[#0c2340]">{stat.value}</span>
+                    <span className="block text-2xl font-extrabold tracking-tight text-[#0b1b16]">{stat.value}</span>
                     <span className="mt-0.5 block text-xs font-medium text-slate-600 sm:text-sm">{stat.label}</span>
                   </span>
                 </li>

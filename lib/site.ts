@@ -43,6 +43,21 @@ export const messages = {
   need: "Hello Josachi, I am asking about a repaired computer for someone who needs one.\n\nWho it is for:\nWhat the computer needs to do:\nTown:",
 } as const;
 
+export const themedPaths = [
+  "/",
+  "/about",
+  "/faq",
+  "/donations",
+  "/recycling",
+  "/upgrades",
+  "/repair",
+  "/sell",
+  "/contact",
+  "/donate",
+  "/dispose",
+  "/upgrade",
+] as const;
+
 export const nav = [
   { href: "/donate", label: "Donate" },
   { href: "/sell", label: "Sell" },

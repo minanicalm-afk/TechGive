@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 const variants = {
   copper:
     "bg-copper text-cream shadow-[0_12px_30px_-16px_rgba(154,67,24,0.9)] hover:bg-copper-deep",
+  green: "bg-[#22c55e] text-white shadow-[0_12px_30px_-16px_rgba(22,163,74,0.9)] hover:bg-[#16a34a]",
   cream: "bg-cream text-ink hover:bg-white",
   leaf: "bg-leaf text-cream",
   ghost: "border border-ink/15 bg-cream/40 text-ink hover:bg-cream",

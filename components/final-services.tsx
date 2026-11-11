@@ -9,7 +9,7 @@ const top = [
     copy: "Give unused laptops, desktops and other electronics to help those in need.",
     points: ["Laptops & Desktops", "Monitors & Accessories", "Servers & More"],
     cta: "Donate Now",
-    href: "/donate",
+    href: "/donations",
     image: "/final-svc-donate-2.jpg",
   },
   {
@@ -19,7 +19,7 @@ const top = [
     copy: "Dispose of old or broken electronics safely and responsibly.",
     points: ["E-Waste Collection", "Secure Recycling", "Environmental Care"],
     cta: "Schedule a Pickup",
-    href: "/dispose",
+    href: "/recycling",
     image: "/final-svc-recycle-2.jpg",
   },
   {
@@ -29,7 +29,7 @@ const top = [
     copy: "Upgrade your existing systems to newer generations for better performance.",
     points: ["Hardware Upgrades", "OS Updates", "Performance Boost"],
     cta: "Request an Upgrade",
-    href: "/upgrade",
+    href: "/upgrades",
     image: "/final-svc-upgrade-2.jpg",
   },
 ] as const;
@@ -52,7 +52,7 @@ const bottom = [
     copy: "Expert repair services for all your computing needs.",
     points: ["Hardware & Software Repair", "System Optimization", "Data Recovery"],
     cta: "Book a Repair",
-    href: "/contact",
+    href: "/repair",
     image: "/final-svc-repair.jpg",
   },
 ] as const;
@@ -67,7 +67,7 @@ export function FinalServices() {
             OUR SERVICES
             <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0c2340] sm:text-[2.7rem]">
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-[2.7rem]">
             Comprehensive <span className="text-[#16a34a]">Electronics Solutions</span>
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm text-slate-600 sm:text-base">
@@ -104,7 +104,7 @@ function ServiceCard({
           <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-[#16a34a] text-white">
             <CardIcon name={card.icon} />
           </span>
-          <h3 className="pt-1.5 text-lg font-extrabold tracking-tight text-[#0c2340]">{card.title}</h3>
+          <h3 className="pt-1.5 text-lg font-extrabold tracking-tight text-[#0b1b16]">{card.title}</h3>
         </div>
         <p className="mt-3 text-sm leading-relaxed text-slate-600">{card.copy}</p>
         <ul className="mt-3 space-y-1.5">

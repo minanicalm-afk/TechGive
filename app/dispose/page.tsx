@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FlowPage } from "@/components/flow/flow-page";
 import { PathForm } from "@/components/flow/path-form";
+import { Home4Footer } from "@/components/home4-footer";
 
 export const metadata: Metadata = {
   title: "Book a disposal collection",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function DisposePage() {
   return (
+    <>
     <FlowPage
       eyebrow="Dispose"
       title="Dead equipment, collected for a fee."
@@ -20,7 +22,9 @@ export default function DisposePage() {
         "What can still be repaired may be given to a school. The rest is disposed of.",
       ]}
     >
-      <PathForm kind="dispose" />
+      <PathForm kind="dispose" tone="home" />
     </FlowPage>
+    <Home4Footer />
+    </>
   );
 }

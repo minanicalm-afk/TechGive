@@ -6,52 +6,67 @@ const columns = [
   {
     title: "Quick Links",
     items: [
-      ["Home", "/home4"],
-      ["Our Services", "/home4#services"],
-      ["Our Impact", "/home4#impact"],
+      ["Home", "/"],
+      ["Our Services", "/#services"],
+      ["Our Impact", "/#impact"],
       ["About Us", "/about"],
     ],
   },
   {
     title: "Services",
     items: [
-      ["Donate Devices", "/home4#donations"],
-      ["Sell Electronics", "/home4#sell"],
-      ["Repairs", "/home4#repair"],
-      ["Recycling", "/home4#recycling"],
+      ["Donate Devices", "/donations"],
+      ["Sell Electronics", "/sell"],
+      ["Repairs", "/repair"],
+      ["Recycling", "/recycling"],
     ],
   },
   {
     title: "Support",
     items: [
       ["FAQ", "/faq"],
-      ["Contact", "/home4/contact"],
-      ["WhatsApp", "/home4/contact"],
+      ["Contact", "/contact"],
+      ["WhatsApp", "/contact"],
     ],
   },
 ] as const;
 
 export function Home4Footer() {
-  return <TechFooter homeHref="/home4" page columns={columns} />;
+  return <TechFooter homeHref="/" page columns={columns} />;
 }
+
+const bannerFocus = {
+  center: "object-center",
+  low: "object-[center_72%]",
+  right: "object-right",
+} as const;
 
 export function Home4Banner({
   image,
   eyebrow,
   title,
   text,
+  focus = "center",
   children,
 }: {
   image: string;
   eyebrow: string;
   title: ReactNode;
   text: string;
+  focus?: keyof typeof bannerFocus;
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-[#041e2c] text-white">
-      <Image src={image} alt="" fill priority className="object-cover object-center" sizes="100vw" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#041e2c] via-[#041e2c]/88 via-50% to-[#041e2c]/25" />
+    <section className="relative isolate overflow-hidden bg-[#071a12] text-white">
+      <Image
+        src={image}
+        alt=""
+        fill
+        priority
+        className={`object-cover ${bannerFocus[focus]}`}
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#071a12] via-[#071a12]/88 via-50% to-[#071a12]/25" />
       <div className="relative mx-auto flex min-h-[32rem] w-full max-w-[96rem] flex-col justify-end px-4 pt-32 pb-16 sm:min-h-[36rem] sm:px-6 sm:pt-36 sm:pb-20">
         <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.18em] text-[#86efac]">
           <span className="h-0.5 w-10 bg-[#86efac]" aria-hidden="true" />

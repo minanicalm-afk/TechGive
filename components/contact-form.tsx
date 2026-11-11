@@ -14,7 +14,7 @@ const subjects = [
 export function ContactForm({ tone = "desk" }: { tone?: "desk" | "home4" }) {
   const home = tone === "home4";
   const control = home
-    ? "mt-2 w-full rounded-2xl border border-slate-200 bg-[#f4fbf6] px-4 py-3 text-sm text-[#0c2340] outline-none placeholder:text-slate-400 focus:border-[#16a34a]"
+    ? "mt-2 w-full rounded-2xl border border-slate-200 bg-[#f4fbf6] px-4 py-3 text-sm text-[#0b1b16] outline-none placeholder:text-slate-400 focus:border-[#16a34a]"
     : "mt-2 w-full rounded-2xl border border-ink/10 bg-paper px-4 py-3 text-sm text-ink outline-none placeholder:text-ink-soft/70 focus:border-copper";
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -49,11 +49,11 @@ export function ContactForm({ tone = "desk" }: { tone?: "desk" | "home4" }) {
     return (
       <div>
         <p className={`text-xs font-semibold uppercase tracking-[0.18em] ${home ? "text-[#16a34a]" : "text-copper"}`}>Ready to send</p>
-        <h2 className={`mt-3 text-3xl tracking-[-0.03em] ${home ? "font-extrabold text-[#0c2340]" : "font-serif"}`}>The message is ready.</h2>
+        <h2 className={`mt-3 text-3xl tracking-[-0.03em] ${home ? "font-extrabold text-[#0b1b16]" : "font-serif"}`}>The message is ready.</h2>
         <p className={`mt-3 text-sm leading-relaxed ${home ? "text-slate-600" : "text-ink-soft"}`}>
           Send it on WhatsApp. The desk replies there, usually within minutes during opening hours.
         </p>
-        <pre className={`mt-6 overflow-x-auto rounded-2xl p-4 text-sm leading-relaxed whitespace-pre-wrap ${home ? "bg-[#f4fbf6] text-[#0c2340]" : "bg-paper text-ink"}`}>
+        <pre className={`mt-6 overflow-x-auto rounded-2xl p-4 text-sm leading-relaxed whitespace-pre-wrap ${home ? "bg-[#f4fbf6] text-[#0b1b16]" : "bg-paper text-ink"}`}>
           {note}
         </pre>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -70,7 +70,7 @@ export function ContactForm({ tone = "desk" }: { tone?: "desk" | "home4" }) {
 
   return (
     <form onSubmit={onSubmit} noValidate>
-      <h2 className={`text-3xl tracking-[-0.03em] ${home ? "font-extrabold text-[#0c2340]" : "font-serif"}`}>Send us a message</h2>
+      <h2 className={`text-3xl tracking-[-0.03em] ${home ? "font-extrabold text-[#0b1b16]" : "font-serif"}`}>Send us a message</h2>
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
         <label className="block text-sm font-medium" htmlFor="contact-name">
           Your name <span className={home ? "text-[#16a34a]" : "text-copper"}>*</span>

@@ -1,17 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { PartnerCarousel } from "@/components/partner-carousel";
 import { Button } from "@/components/ui/button";
 import { shell } from "@/lib/ui";
-
-const brands = [
-  "Greenfield Academy",
-  "BrightPath NGO",
-  "Northwind Logistics",
-  "Kijani Foundation",
-  "Orbit Bank",
-];
 
 const cards = [
   { label: "Donations", value: "2,386", detail: "devices donated" },
@@ -21,28 +13,10 @@ const cards = [
 ];
 
 export function TrustedProof() {
-  const reduce = useReducedMotion();
-  const loop = [...brands, ...brands];
-
   return (
     <section className="bg-cream py-16 sm:py-20">
       <div className={shell}>
-        <p className="text-center text-xs font-semibold tracking-[0.22em] text-ink-soft">
-          Trusted by schools, NGOs and companies
-        </p>
-        <div className="relative mt-8 overflow-hidden">
-          <motion.ul
-            className="flex w-max items-center gap-16"
-            animate={reduce ? undefined : { x: ["0%", "-50%"] }}
-            transition={reduce ? undefined : { duration: 22, ease: "linear", repeat: Infinity }}
-          >
-            {loop.map((name, index) => (
-              <li key={`${name}-${index}`} className="text-lg font-semibold whitespace-nowrap text-ink/35 sm:text-xl">
-                {name}
-              </li>
-            ))}
-          </motion.ul>
-        </div>
+        <PartnerCarousel />
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {cards.map((card) => (

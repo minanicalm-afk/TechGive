@@ -10,7 +10,6 @@ export const homePages = [
   { href: "/home1", label: "Home 1" },
   { href: "/home2", label: "Home 2" },
   { href: "/home3", label: "Home 3" },
-  { href: "/home4", label: "Home 4" },
 ] as const;
 
 export function HomesMenu({ buttonClassName }: { buttonClassName: string }) {

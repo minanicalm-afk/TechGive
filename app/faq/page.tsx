@@ -75,7 +75,7 @@ export default function FaqPage() {
         />
 
         <section className="mx-auto grid w-full max-w-[96rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[18rem_1fr] lg:py-20">
-          <aside className="h-fit rounded-[1.6rem] bg-[#062c3c] p-6 text-white lg:sticky lg:top-28">
+          <aside className="h-fit rounded-[1.6rem] bg-[#123d2b] p-6 text-white lg:sticky lg:top-28">
             <p className="text-xs font-bold tracking-[0.18em] text-[#86efac]">STILL UNSURE</p>
             <h2 className="mt-3 text-2xl font-extrabold leading-tight">Ask the desk before you load the car.</h2>
             <p className="mt-3 text-sm leading-relaxed text-white/75">
@@ -89,7 +89,7 @@ export default function FaqPage() {
             >
               WhatsApp the desk
             </a>
-            <Link href="/home4/contact" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+            <Link href="/contact" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
               Write a message
             </Link>
           </aside>
@@ -101,7 +101,7 @@ export default function FaqPage() {
                 <div className="mt-2 divide-y divide-slate-200 border-t border-slate-200">
                   {group.items.map((item, index) => (
                     <details key={item.q} className="group py-5" open={index === 0}>
-                      <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-lg font-extrabold text-[#0c2340] [&::-webkit-details-marker]:hidden">
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-lg font-extrabold text-[#0b1b16] [&::-webkit-details-marker]:hidden">
                         <span>
                           <span className="mr-3 text-[#16a34a]">{String(index + 1).padStart(2, "0")}</span>
                           {item.q}

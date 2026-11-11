@@ -19,11 +19,26 @@ const facts = [
   { href: "/upgrade", label: "Upgrade", value: "Old working machines donated, or released for a small fee" },
 ];
 
-export function Hero({ image }: { image?: string }) {
+export function Hero({ image, motion = false }: { image?: string; motion?: boolean }) {
+  const scenic = Boolean(image) || motion;
   return (
     <>
-    <section className="relative overflow-hidden bg-ink text-cream">
-      {image ? (
+    <section className={`relative overflow-hidden text-cream ${motion ? "hero-motion" : "bg-ink"}`}>
+      {motion ? (
+        <div className="pointer-events-none absolute inset-0">
+          <div className="hero-pile">
+            <Image
+              src="/hero-pile.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-right-bottom"
+            />
+          </div>
+          <div className="hero-wash" />
+        </div>
+      ) : image ? (
         <>
           <svg className="absolute size-0" aria-hidden="true">
             <filter id="hero-no-white" colorInterpolationFilters="sRGB">
@@ -63,7 +78,7 @@ export function Hero({ image }: { image?: string }) {
 
       <div
         className={
-          image
+          scenic
             ? "relative z-10 mx-auto grid min-h-[36rem] w-full max-w-[96rem] items-center gap-8 px-4 pt-28 pb-32 sm:px-6 lg:grid-cols-2 lg:pt-32 lg:pb-36"
             : "relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-24 text-center sm:px-8 lg:pt-40 lg:pb-28"
         }
@@ -74,7 +89,7 @@ export function Hero({ image }: { image?: string }) {
           </p>
           <h1
             className={
-              image
+              scenic
                 ? "mt-5 max-w-xl font-serif text-5xl leading-[0.98] tracking-[-0.035em] sm:text-6xl"
                 : "mt-5 font-serif text-[3.15rem] leading-[0.98] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.4rem]"
             }
@@ -84,7 +99,7 @@ export function Hero({ image }: { image?: string }) {
           </h1>
           <p
             className={
-              image
+              scenic
                 ? "mt-6 max-w-lg text-lg leading-relaxed text-pretty text-cream/78"
                 : "mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-cream/78"
             }
@@ -93,8 +108,8 @@ export function Hero({ image }: { image?: string }) {
             cause, let us handle your company&apos;s IT upgrades, sell to us for a fair price, or
             safely dispose of e-waste in Juja and Nairobi — we make it simple.
           </p>
-          <div className={`mt-8 flex flex-col gap-3 sm:flex-row ${image ? "items-stretch sm:items-center" : "items-center justify-center"}`}>
-            {image ? (
+          <div className={`mt-8 flex flex-col gap-3 sm:flex-row ${scenic ? "items-stretch sm:items-center" : "items-center justify-center"}`}>
+            {scenic ? (
               <>
                 <Link href="/donate" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#22c55e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#16a34a]">
                   Donate Devices
@@ -121,8 +136,8 @@ export function Hero({ image }: { image?: string }) {
             )}
           </div>
         </div>
-        {image ? (
-          <div className="relative h-72 sm:h-96 lg:hidden">
+        {image && !motion ? (
+          <div className="relative h-80 sm:h-96 lg:hidden">
             <Image
               src={image}
               alt="A recycling mark made from computer motherboards."
@@ -136,7 +151,7 @@ export function Hero({ image }: { image?: string }) {
 
       </div>
 
-      {image ? (
+      {scenic ? (
         <svg viewBox="0 0 1440 90" className="absolute right-0 bottom-0 left-0 z-10 h-16 w-full sm:h-20" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0 48C360 78 820 8 1440 42V90H0V48Z" fill="#22c55e" />
           <path d="M0 62C380 92 860 28 1440 58V90H0V62Z" fill="#ffffff" />
@@ -144,7 +159,7 @@ export function Hero({ image }: { image?: string }) {
       ) : null}
     </section>
 
-    {image ? (
+    {scenic ? (
       <section className="bg-white">
         <ul className="mx-auto grid w-full max-w-[96rem] gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:py-14">
           {features.map((item) => (

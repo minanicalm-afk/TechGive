@@ -5,23 +5,23 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ActionLink } from "@/components/action-link";
 import { Logo } from "@/components/logo";
-import { Arrow, homePages, HomesMenu } from "@/components/techgive-ui";
-import { messages, nav } from "@/lib/site";
+import { Arrow } from "@/components/techgive-ui";
+import { messages, nav, themedPaths } from "@/lib/site";
 import { shell } from "@/lib/ui";
 
 const finalServices = [
-  { href: "/home4#donations", label: "Donations" },
-  { href: "/home4#recycling", label: "Collection for Recycling" },
-  { href: "/home4#upgrades", label: "System Upgrades" },
-  { href: "/home4#buy", label: "Buy from Us" },
-  { href: "/home4#repair", label: "Repair Services" },
+  { href: "/donations", label: "Donations" },
+  { href: "/recycling", label: "Collection for Recycling" },
+  { href: "/upgrades", label: "System Upgrades" },
+  { href: "/sell", label: "Sell to Us" },
+  { href: "/repair", label: "Repair Services" },
 ] as const;
 
 const finalNav = [
-  { href: "/home4#impact", label: "Impact" },
+  { href: "/#impact", label: "Impact" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
-  { href: "/home4/contact", label: "Contact" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 function subscribe(onStoreChange: () => void) {
@@ -52,10 +52,8 @@ export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const pendingScroll = useRef<string | null>(null);
-  const onFinal =
-    pathname === "/home4" || pathname === "/about" || pathname === "/faq" || pathname === "/home4/contact";
+  const onFinal = themedPaths.includes(pathname as (typeof themedPaths)[number]);
   const solid = scrolled || open;
-  const onLanding = pathname === "/" || onFinal;
   const linkClass = solid ? "text-ink-soft hover:text-ink" : "text-cream/80 hover:text-cream";
 
   useEffect(() => {
@@ -103,14 +101,13 @@ export function Header() {
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Page">
           {onFinal ? (
             <Link
-              href="/home4"
-              aria-current={pathname === "/home4" ? "page" : undefined}
-              className={`text-sm font-medium ${pathname === "/home4" ? "underline decoration-2 underline-offset-8" : ""} ${solid ? "text-[#16a34a]" : "text-emerald-300"}`}
+              href="/"
+              aria-current={pathname === "/" ? "page" : undefined}
+              className={`text-sm font-medium ${pathname === "/" ? "underline decoration-2 underline-offset-8" : ""} ${solid ? "text-[#16a34a]" : "text-emerald-300"}`}
             >
               Home
             </Link>
           ) : null}
-          {onLanding ? <HomesMenu buttonClassName={linkClass} /> : null}
           {onFinal ? (
             <div className="relative" ref={servicesRef}>
               <button
@@ -158,7 +155,7 @@ export function Header() {
         <div className="hidden lg:block">
           {onFinal ? (
             <a
-              href="/home4#get-started"
+              href="/#get-started"
               className="inline-flex items-center gap-2 rounded-full bg-[#22c55e] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_18px_-10px_rgba(22,163,74,0.9)] hover:bg-[#16a34a]"
             >
               Get Involved <Arrow />
@@ -192,25 +189,13 @@ export function Header() {
           <nav className="mx-auto flex w-full max-w-7xl flex-col" aria-label="Mobile">
             {onFinal ? (
               <Link
-                href="/home4"
+                href="/"
                 className="border-b border-ink/10 py-3.5 font-serif text-2xl text-[#16a34a]"
                 onClick={() => setOpen(false)}
               >
                 Home
               </Link>
             ) : null}
-            {onLanding
-              ? homePages.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="border-b border-ink/10 py-3.5 font-serif text-2xl text-ink"
-                    onClick={() => setOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))
-              : null}
             {onFinal
               ? finalServices.map((item) => (
                   <a
@@ -245,7 +230,7 @@ export function Header() {
             <div className="pt-5">
               {onFinal ? (
                 <a
-                  href="/home4#get-started"
+                  href="/#get-started"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#22c55e] px-4 py-3 text-sm font-semibold text-white"
                   onClick={() => setOpen(false)}
                 >

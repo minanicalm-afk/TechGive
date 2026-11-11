@@ -7,11 +7,6 @@ const devices = ["Laptop", "Desktop / CPU", "Server", "TV", "Printer", "Scanner"
   label,
 }));
 
-const desks = [
-  { value: "Juja", label: "Juja" },
-  { value: "Nairobi", label: "Nairobi" },
-];
-
 type PathFormKind = "donate" | "dispose" | "upgrade" | "ask";
 
 const forms: Record<
@@ -29,8 +24,9 @@ const forms: Record<
     doneTitle: "The donation note is ready.",
     doneText: "Send it on WhatsApp. We confirm whether you will bring it to Juja or we will collect it. Working donations are collected without a charge.",
     fields: [
-      { name: "name", label: "Your name", type: "text", required: true },
-      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
+      { name: "name", label: "Your name/organization", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true, half: true },
+      { name: "email", label: "Email", type: "email", required: true, half: true },
       { name: "device", label: "What are you donating?", type: "select", required: true, options: devices },
       {
         name: "condition",
@@ -43,7 +39,7 @@ const forms: Record<
           { value: "Company lot of working machines", label: "Company lot of working machines" },
         ],
       },
-      { name: "desk", label: "Desk", type: "select", required: true, options: desks },
+      { name: "location", label: "Location", type: "text", required: true },
       { name: "note", label: "Anything the bench should know", type: "textarea" },
     ],
     buildMessage: (values) => {
@@ -52,9 +48,10 @@ const forms: Record<
         "",
         `Name: ${values.name?.trim()}`,
         `WhatsApp: ${values.phone?.trim()}`,
+        `Email: ${values.email?.trim()}`,
         `What it is: ${values.device}`,
         `Condition: ${values.condition}`,
-        `I can bring it to: ${values.desk}`,
+        `Location: ${values.location?.trim()}`,
       ];
       if (values.note?.trim()) lines.push(`Note: ${values.note.trim()}`);
       return lines.join("\n");
@@ -155,7 +152,7 @@ const forms: Record<
   },
 };
 
-export function PathForm({ kind }: { kind: PathFormKind }) {
+export function PathForm({ kind, tone = "desk" }: { kind: PathFormKind; tone?: "desk" | "home" }) {
   const form = forms[kind];
-  return <RequestForm {...form} />;
+  return <RequestForm {...form} tone={tone} />;
 }
