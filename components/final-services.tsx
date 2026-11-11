@@ -10,7 +10,9 @@ const top = [
     points: ["Laptops & Desktops", "Monitors & Accessories", "Servers & More"],
     cta: "Donate Now",
     href: "/donations",
-    image: "/final-svc-donate-2.jpg",
+    image: "/home-impact.jpg",
+    alt: "A student using a laptop at a classroom desk",
+    position: "center 30%",
   },
   {
     id: "recycling",
@@ -20,7 +22,9 @@ const top = [
     points: ["E-Waste Collection", "Secure Recycling", "Environmental Care"],
     cta: "Schedule a Pickup",
     href: "/recycling",
-    image: "/final-svc-recycle-2.jpg",
+    image: "/services/recycle.jpg",
+    alt: "A pile of old monitors and desktop computers",
+    position: "center center",
   },
   {
     id: "upgrades",
@@ -30,7 +34,9 @@ const top = [
     points: ["Hardware Upgrades", "OS Updates", "Performance Boost"],
     cta: "Request an Upgrade",
     href: "/upgrades",
-    image: "/final-svc-upgrade-2.jpg",
+    image: "/services/upgrade.jpg",
+    alt: "Office computers stacked and wrapped for collection",
+    position: "center 70%",
   },
 ] as const;
 
@@ -43,7 +49,9 @@ const bottom = [
     points: ["Laptops, Desktops & More", "Instant Pricing", "Flexible Options"],
     cta: "Get a Quote",
     href: "/sell",
-    image: "/final-svc-sell.jpg",
+    image: "/services/shop.jpg",
+    alt: "Laptops on the counter of a computer shop",
+    position: "32% 68%",
   },
   {
     id: "repair",
@@ -53,7 +61,9 @@ const bottom = [
     points: ["Hardware & Software Repair", "System Optimization", "Data Recovery"],
     cta: "Book a Repair",
     href: "/repair",
-    image: "/final-svc-repair.jpg",
+    image: "/services/opened.jpg",
+    alt: "A laptop opened on a workbench, showing the board and memory",
+    position: "58% 28%",
   },
 ] as const;
 
@@ -85,6 +95,9 @@ export function FinalServices() {
             <ServiceCard key={card.id} card={card} wide />
           ))}
         </div>
+        <p className="mt-4 text-center text-[11px] leading-relaxed text-slate-400">
+          Computer shop by Adamrabah, CC BY-SA 4.0. Office machines by Jemimus, CC BY 2.0. Monitor pile: public domain.
+        </p>
       </div>
     </section>
   );
@@ -128,8 +141,15 @@ function ServiceCard({
           </Link>
         </div>
       </div>
-      <div className="relative min-h-52 bg-[radial-gradient(circle_at_55%_45%,#d9f5e4,transparent_70%)]">
-        <Image src={card.image} alt="" fill className="object-contain object-center p-3" sizes={wide ? "420px" : "280px"} />
+      <div className="relative min-h-52 sm:min-h-full">
+        <Image
+          src={card.image}
+          alt={card.alt}
+          fill
+          className="object-cover"
+          style={{ objectPosition: card.position }}
+          sizes={wide ? "480px" : "320px"}
+        />
       </div>
     </article>
   );
