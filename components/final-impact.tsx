@@ -1,15 +1,36 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const stats = [
-  { value: "500+", label: "Devices Repaired", icon: "laptop" },
-  { value: "1,000+", label: "People Supported", icon: "people" },
-  { value: "5 Tons", label: "E-Waste Recycled", icon: "recycle" },
-  { value: "50+", label: "Organizations Assisted", icon: "building" },
+  { target: 500, suffix: "+", label: "Devices Repaired", icon: "laptop" },
+  { target: 1000, suffix: "+", label: "People Supported", icon: "people", grouped: true },
+  { target: 5, suffix: " Tons", label: "E-Waste Recycled", icon: "recycle" },
+  { target: 50, suffix: "+", label: "Organizations Assisted", icon: "building" },
 ] as const;
 
 export function FinalImpact() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const check = () => {
+      const rect = node.getBoundingClientRect();
+      const visible = rect.top < window.innerHeight * 0.8 && rect.bottom > 80;
+      if (!visible) return;
+      setActive(true);
+      window.removeEventListener("scroll", check);
+    };
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
+  }, []);
+
   return (
-    <section id="impact" className="bg-white py-10 sm:py-14">
+    <section id="impact" ref={sectionRef} className="scroll-mt-24 bg-white py-10 sm:py-14">
       <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
         <div className="relative overflow-hidden rounded-[2rem] bg-white">
           <Image
@@ -17,7 +38,7 @@ export function FinalImpact() {
             alt=""
             fill
             className="object-cover object-right"
-            sizes="1152px"
+            sizes="(min-width: 1024px) 90vw, 100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white via-40% to-white/15" />
 
@@ -46,7 +67,9 @@ export function FinalImpact() {
                     <StatIcon name={stat.icon} />
                   </span>
                   <span>
-                    <span className="block text-2xl font-extrabold tracking-tight text-[#0b1b16]">{stat.value}</span>
+                    <span className="block text-2xl font-extrabold tracking-tight text-[#0b1b16]">
+                      <CountUp target={stat.target} suffix={stat.suffix} grouped={"grouped" in stat} active={active} />
+                    </span>
                     <span className="mt-0.5 block text-xs font-medium text-slate-600 sm:text-sm">{stat.label}</span>
                   </span>
                 </li>
@@ -56,6 +79,48 @@ export function FinalImpact() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CountUp({
+  target,
+  suffix,
+  grouped = false,
+  active,
+}: {
+  target: number;
+  suffix: string;
+  grouped?: boolean;
+  active: boolean;
+}) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setValue(target);
+      return;
+    }
+    const start = performance.now();
+    const duration = 1400;
+    let frame = 0;
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - (1 - progress) ** 3;
+      setValue(Math.round(target * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [active, target]);
+
+  const shown = grouped ? value.toLocaleString("en-US") : String(value);
+  return (
+    <>
+      {shown}
+      {suffix}
+    </>
   );
 }
 

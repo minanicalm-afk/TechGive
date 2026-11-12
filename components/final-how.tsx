@@ -52,8 +52,12 @@ export function FinalHow() {
     <section id="how" className="scroll-mt-24 bg-white py-16 lg:py-20">
       <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">HOW IT WORKS</p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+          <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#16a34a]">
+            <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
+            HOW IT WORKS
+            <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
+          </p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-[2.7rem] lg:text-5xl">
             Four ways a machine leaves your hands
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
@@ -65,10 +69,10 @@ export function FinalHow() {
           {paths.map((path) => (
             <li key={path.title} className="flex flex-col rounded-[1.4rem] bg-[#f4fbf6] p-6 text-left">
               <h3 className="text-lg font-extrabold tracking-tight text-[#0b1b16]">{path.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{path.summary}</p>
+              <p className="mt-2 text-base leading-relaxed text-slate-600">{path.summary}</p>
               <ol className="mt-5 space-y-3">
                 {path.steps.map((step, index) => (
-                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-slate-700">
+                  <li key={step} className="flex gap-3 text-base leading-relaxed text-slate-700">
                     <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#22c55e] text-xs font-bold text-white">
                       {index + 1}
                     </span>

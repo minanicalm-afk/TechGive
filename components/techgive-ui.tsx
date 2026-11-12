@@ -60,13 +60,13 @@ export function HomesMenu({ buttonClassName }: { buttonClassName: string }) {
   );
 }
 
-export function Mark({ className = "size-9" }: { className?: string }) {
+export function Mark({ className = "size-9", color = "#22c55e" }: { className?: string; color?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
-      <path d="M16 3.2 28.2 10v12L16 28.8 3.8 22V10L16 3.2Z" fill="none" stroke="#22c55e" strokeWidth="1.8" />
+      <path d="M16 3.2 28.2 10v12L16 28.8 3.8 22V10L16 3.2Z" fill="none" stroke={color} strokeWidth="1.8" />
       <path
         d="M11.2 16.4a4.8 4.8 0 0 1 7.6-3.9l-1.6 1.5a2.9 2.9 0 0 0-4.3 2.4h-1.7Zm9.6 0h-1.7a2.9 2.9 0 0 0-2.4 4.3l1.5 1.6a4.8 4.8 0 0 1 2.6-5.9Zm-4.8 4.8v1.7a4.8 4.8 0 0 1-5.9-2.6l1.6-1.5a2.9 2.9 0 0 0 4.3 2.4Zm0-9.6a4.8 4.8 0 0 1 5.9 2.6l-1.5 1.6a2.9 2.9 0 0 0-4.4-2.5V11.6Z"
-        fill="#22c55e"
+        fill={color}
       />
     </svg>
   );

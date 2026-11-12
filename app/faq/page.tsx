@@ -22,6 +22,14 @@ const groups = [
         a: "A repairable computer is cleaned and fixed, then given to a less privileged school. What cannot be repaired is recycled or disposed of responsibly. Donations are not stock for the shop.",
       },
       {
+        q: "Who gets a donated device?",
+        a: "A repaired donation goes to a student, a job seeker, or a community class that is short of machines. We place it where that need is specific, usually a less privileged school.",
+      },
+      {
+        q: "Do you wipe hard drives?",
+        a: "Yes. Before a machine is handed on or opened for parts, the drive is wiped or destroyed. Say if it was a work computer. Data recovery is not promised.",
+      },
+      {
         q: "Do I need the charger?",
         a: "No. A missing charger is fine. Bring the machine as it is, and we will note what arrived.",
       },
@@ -37,6 +45,10 @@ const groups = [
       {
         q: "When do I get paid?",
         a: "After inspection. The range you see first is a proposal. Payment follows once the desk has seen the item.",
+      },
+      {
+        q: "Do I need a receipt to sell?",
+        a: "No. A receipt helps the desk confirm the machine. If you do not have one, bring identification to Juja so we can confirm it is yours. We do not ask you to upload a national ID.",
       },
       {
         q: "Do you buy equipment that is dead?",
