@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { Home4Banner, Home4Footer } from "@/components/home4-footer";
+import { Home4Footer } from "@/components/home4-footer";
 import { messages, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 const groups = [
   {
-    title: "Giving a computer",
+    title: "Donations",
     items: [
       {
         q: "What can I bring?",
@@ -57,7 +58,20 @@ const groups = [
     ],
   },
   {
-    title: "Organisations and the visit",
+    title: "Recycling & disposal",
+    items: [
+      {
+        q: "How does disposal work?",
+        a: "Dead equipment is a paid collection, not a buyback. Tell us roughly how many pieces and the town. We confirm the fee before we travel. A van is for 20 pieces or more. Repairable parts stay in service. The rest is recycled.",
+      },
+      {
+        q: "Why recycle with the desk?",
+        a: "Electronics that cannot be repaired are disposed of responsibly, for a cleaner and safer environment. We do not dump working parts that can still serve another machine.",
+      },
+    ],
+  },
+  {
+    title: "The desk & organisations",
     items: [
       {
         q: "Can an organisation upgrade its machines?",
@@ -71,6 +85,10 @@ const groups = [
         q: "When are you open?",
         a: "Open every day, except occasionally on Sundays. WhatsApp is the fastest way to reach the desk during those hours.",
       },
+      {
+        q: "Do you also repair and buy electronics?",
+        a: "Yes. The Juja shop repairs computers and buys working electronics after inspection. Repair and buyback stay at the desk. Donations are not sold as shop stock.",
+      },
     ],
   },
 ] as const;
@@ -78,56 +96,93 @@ const groups = [
 export default function FaqPage() {
   return (
     <>
-      <main id="main" className="bg-white">
-        <Home4Banner
-          image="/final-hero.jpg"
-          eyebrow="FAQ"
-          title="The short answers, before you make the trip."
-          text="Donations, sales, disposal, and upgrades all start the same way: tell us what you have, and we say what the desk can do with it."
-        />
-
-        <section className="mx-auto grid w-full max-w-[96rem] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[18rem_1fr] lg:py-20">
-          <aside className="h-fit rounded-[1.6rem] bg-[#123d2b] p-6 text-white lg:sticky lg:top-28">
-            <p className="text-xs font-bold tracking-[0.18em] text-[#86efac]">STILL UNSURE</p>
-            <h2 className="mt-3 text-2xl font-extrabold leading-tight">Ask the desk before you load the car.</h2>
-            <p className="mt-3 text-sm leading-relaxed text-white/75">
-              A photo and a town is enough to start. The range for a sale is confirmed after we see the item.
+      <main id="main" className="bg-[#f4fbf6]">
+        <section className="relative isolate overflow-hidden bg-[#071a12] text-white">
+          <Image
+            src="/final-impact.jpg"
+            alt="Laptops on a workbench under a Reduce, Reuse, Recycle sign"
+            fill
+            priority
+            className="object-cover object-[center_40%]"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071a12] via-[#071a12]/80 via-45% to-[#071a12]/20" />
+          <div className="relative mx-auto flex min-h-[28rem] w-full max-w-[96rem] flex-col justify-end px-4 pt-32 pb-16 sm:min-h-[32rem] sm:px-6 sm:pt-36 sm:pb-20">
+            <p className="inline-flex w-fit items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 text-[11px] font-bold tracking-[0.22em] text-[#86efac]">
+              FAQ
             </p>
-            <a
-              href={whatsappHref(messages.general)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#22c55e] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]"
-            >
-              WhatsApp the desk
-            </a>
-            <Link href="/contact" className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-white/25 px-4 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
-              Write a message
-            </Link>
-          </aside>
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl">
+              Questions, answered before you travel.
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+              Everything you might want to know about donations, sales, recycling, and the Juja desk.
+            </p>
+          </div>
+        </section>
 
-          <div className="space-y-12">
+        <section className="mx-auto w-full max-w-[96rem] px-4 py-16 sm:px-6 lg:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+              Everything you need to know
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+              Short answers before you load the car. Tell us what you have, and we say what the desk can do with it.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-14">
             {groups.map((group) => (
               <section key={group.title}>
-                <h2 className="text-sm font-bold tracking-[0.16em] text-[#16a34a]">{group.title.toUpperCase()}</h2>
-                <div className="mt-2 divide-y divide-slate-200 border-t border-slate-200">
-                  {group.items.map((item, index) => (
-                    <details key={item.q} className="group py-5" open={index === 0}>
-                      <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-lg font-extrabold text-[#0b1b16] [&::-webkit-details-marker]:hidden">
-                        <span>
-                          <span className="mr-3 text-[#16a34a]">{String(index + 1).padStart(2, "0")}</span>
-                          {item.q}
-                        </span>
-                        <span className="mt-1 grid size-7 shrink-0 place-items-center rounded-full bg-[#dcfce7] text-lg leading-none text-[#15803d] group-open:rotate-45" aria-hidden="true">
-                          +
-                        </span>
-                      </summary>
-                      <p className="mt-3 max-w-2xl pl-9 text-sm leading-relaxed text-slate-600 sm:text-base">{item.a}</p>
-                    </details>
+                <h3 className="text-center text-xs font-bold tracking-[0.22em] text-[#16a34a]">
+                  {group.title.toUpperCase()}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item.q}>
+                      <details className="group rounded-[1.4rem] bg-white px-5 py-1 shadow-[0_10px_28px_-22px_rgba(15,23,42,0.45)]">
+                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5 text-[15px] font-semibold text-[#0b1b16] [&::-webkit-details-marker]:hidden">
+                          <span>{item.q}</span>
+                          <svg
+                            viewBox="0 0 16 16"
+                            className="size-4 shrink-0 text-slate-400 transition group-open:rotate-180"
+                            aria-hidden="true"
+                            fill="none"
+                          >
+                            <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </summary>
+                        <p className="pb-4 text-sm leading-relaxed text-slate-600">{item.a}</p>
+                      </details>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </section>
             ))}
+          </div>
+        </section>
+
+        <section className="px-4 pb-16 sm:px-6 lg:pb-20">
+          <div className="mx-auto max-w-2xl rounded-[2rem] bg-white px-6 py-12 text-center shadow-[0_18px_40px_-28px_rgba(15,23,42,0.4)] sm:px-10">
+            <h2 className="text-2xl font-extrabold tracking-tight text-[#0b1b16] sm:text-3xl">Still have questions?</h2>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-slate-600 sm:text-base">
+              A photo and a town is enough to start. The range for a sale is confirmed after we see the item.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={whatsappHref(messages.general)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]"
+              >
+                WhatsApp the desk
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-[#d7eadc] px-5 py-2.5 text-sm font-semibold text-[#0b1b16] hover:border-[#16a34a] hover:text-[#15803d]"
+              >
+                Contact us
+              </Link>
+            </div>
           </div>
         </section>
       </main>

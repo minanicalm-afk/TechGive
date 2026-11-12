@@ -18,7 +18,6 @@ const finalServices = [
 ] as const;
 
 const finalNav = [
-  { href: "/#impact", label: "Impact" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
