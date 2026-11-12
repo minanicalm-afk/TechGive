@@ -35,7 +35,7 @@ const services = [
     title: "Corporate IT Upgrades",
     label: "Organisations",
     copy: "A school, NGO, or company hands in the machines it has outgrown. We assess them and supply a newer generation of the same kind, then collect what was replaced.",
-    href: "/upgrade",
+    href: "/upgrades#request",
     cta: "Plan an upgrade",
     image: "/services/upgrade.jpg",
     alt: "Office computers being wrapped for collection",
@@ -122,7 +122,7 @@ const how = [
   {
     title: "Dispose",
     summary: "Dead equipment is a paid collection. We do not buy machines that will not power on.",
-    href: "/dispose",
+    href: "/recycling#pickup",
     cta: "Schedule a pickup",
     steps: [
       "Tell us what is there, roughly how many pieces, and the town.",
@@ -133,7 +133,7 @@ const how = [
   {
     title: "Upgrade",
     summary: "An organisation hands in its fleet and receives a newer generation of the same kind.",
-    href: "/upgrade",
+    href: "/upgrades#request",
     cta: "Request an upgrade",
     steps: [
       "Tell us how many machines, and whether they are laptops, desktops, or both.",
@@ -305,7 +305,7 @@ export default function Home1Page() {
                   </li>
                 ))}
               </ul>
-              <Link href="/upgrade" className="mt-8 inline-flex rounded-full bg-[#22c55e] px-6 py-3.5 text-base font-semibold text-white hover:bg-[#16a34a]">
+              <Link href="/upgrades#request" className="mt-8 inline-flex rounded-full bg-[#22c55e] px-6 py-3.5 text-base font-semibold text-white hover:bg-[#16a34a]">
                 Enquire about an upgrade
               </Link>
             </div>
@@ -501,7 +501,7 @@ export default function Home1Page() {
             <ul className="mt-3 space-y-2 text-base text-white/75">
               <li><Link href="/donations" className="hover:text-white">Donations</Link></li>
               <li><Link href="/recycling" className="hover:text-white">E-waste collection</Link></li>
-              <li><Link href="/upgrade" className="hover:text-white">Corporate upgrades</Link></li>
+              <li><Link href="/upgrades#request" className="hover:text-white">Corporate upgrades</Link></li>
               <li><Link href="/sell" className="hover:text-white">Sell to us</Link></li>
               <li><Link href="/repair" className="hover:text-white">Repair</Link></li>
             </ul>

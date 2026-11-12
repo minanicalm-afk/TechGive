@@ -4,6 +4,8 @@ import { Home4Banner, Home4Footer } from "@/components/home4-footer";
 
 export function Home4Service({
   image,
+  imageAlt,
+  imageRight,
   focus,
   eyebrow,
   title,
@@ -15,9 +17,12 @@ export function Home4Service({
   points,
   stepsTitle,
   steps,
+  form,
   note,
 }: {
   image: string;
+  imageAlt?: string;
+  imageRight?: boolean;
   focus?: "center" | "low" | "right";
   eyebrow: string;
   title: ReactNode;
@@ -29,12 +34,13 @@ export function Home4Service({
   points: readonly string[];
   stepsTitle: string;
   steps: readonly (readonly [string, string])[];
+  form?: ReactNode;
   note: string;
 }) {
   return (
     <>
       <main id="main" className="bg-white">
-        <Home4Banner image={image} focus={focus} eyebrow={eyebrow} title={title} text={text}>
+        <Home4Banner image={image} imageAlt={imageAlt} imageRight={imageRight} focus={focus} eyebrow={eyebrow} title={title} text={text}>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={primary.href} className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
               {primary.label}
@@ -85,6 +91,8 @@ export function Home4Service({
             </ol>
           </div>
         </section>
+
+        {form}
 
         <section className="px-4 py-16 sm:px-6">
           <div className="mx-auto flex w-full max-w-[96rem] flex-col items-start justify-between gap-6 rounded-[2rem] bg-[#123d2b] px-6 py-10 text-white sm:px-10 lg:flex-row lg:items-center">

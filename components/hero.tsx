@@ -15,8 +15,8 @@ const features = [
 const facts = [
   { href: "/donations", label: "Donate", value: "Repaired, then given to less privileged schools" },
   { href: "/sell", label: "Sell", value: "A range, confirmed after we inspect the item" },
-  { href: "/dispose", label: "Dispose", value: "Dead equipment collected for a fee" },
-  { href: "/upgrade", label: "Upgrade", value: "Old working machines donated, or released for a small fee" },
+  { href: "/recycling#pickup", label: "Dispose", value: "Dead equipment collected for a fee" },
+  { href: "/upgrades#request", label: "Upgrade", value: "Old working machines donated, or released for a small fee" },
 ];
 
 export function Hero({ image, motion = false }: { image?: string; motion?: boolean }) {

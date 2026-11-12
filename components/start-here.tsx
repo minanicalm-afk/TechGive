@@ -20,13 +20,13 @@ const paths = [
     title: "Dispose",
     copy: "Dead equipment, collected for a fee. We travel for 20 pieces or more.",
     cta: "Book collection",
-    href: "/dispose",
+    href: "/recycling#pickup",
   },
   {
     title: "Upgrade",
     copy: "Old-generation machines a company can donate, or release for a small fee. We travel for 10 working pieces.",
     cta: "Plan an upgrade",
-    href: "/upgrade",
+    href: "/upgrades#request",
   },
   {
     title: "Ask",

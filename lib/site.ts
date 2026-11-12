@@ -51,18 +51,15 @@ export const themedPaths = [
   "/donations",
   "/recycling",
   "/upgrades",
-  "/repair",
   "/sell",
   "/contact",
-  "/dispose",
-  "/upgrade",
 ] as const;
 
 export const nav = [
   { href: "/donations", label: "Donate" },
   { href: "/sell", label: "Sell" },
-  { href: "/dispose", label: "Dispose" },
-  { href: "/upgrade", label: "Upgrade" },
+  { href: "/recycling", label: "Dispose" },
+  { href: "/upgrades", label: "Upgrade" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

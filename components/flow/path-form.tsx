@@ -93,24 +93,32 @@ const forms: Record<
     },
   },
   upgrade: {
-    submitLabel: "Prepare the upgrade note",
+    submitLabel: "Send the upgrade request",
     doneTitle: "The upgrade note is ready.",
     doneText: "Send it on WhatsApp. Old working machines can be donated, or released for a small fee. We travel for 10 working pieces. A PDF inventory can follow in the chat.",
     fields: [
-      { name: "name", label: "Your name", type: "text", required: true },
-      { name: "organisation", label: "Organisation", type: "text", required: true },
-      { name: "phone", label: "WhatsApp number", type: "tel", required: true },
-      { name: "count", label: "How many machines", type: "text", required: true },
+      { name: "name", label: "Your name", type: "text", required: true, half: true },
+      { name: "organisation", label: "Organisation", type: "text", required: true, half: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true, half: true },
+      { name: "count", label: "How many machines", type: "text", required: true, half: true },
       {
         name: "kind",
         label: "What you run today",
         type: "select",
         required: true,
+        half: true,
         options: [
           { value: "Laptops", label: "Laptops" },
           { value: "Desktops", label: "Desktops" },
           { value: "Both", label: "Laptops and desktops" },
         ],
+      },
+      {
+        name: "inventory",
+        label: "PDF or notes about inventory",
+        type: "text",
+        half: true,
+        placeholder: "A list is enough to start",
       },
       { name: "note", label: "What the machines are used for", type: "textarea" },
     ],
@@ -123,6 +131,7 @@ const forms: Record<
         `WhatsApp: ${values.phone?.trim()}`,
         `How many machines: ${values.count?.trim()}`,
         `What they are: ${values.kind}`,
+        values.inventory?.trim() ? `Inventory: ${values.inventory.trim()}` : "",
         values.note?.trim() ? `Used for: ${values.note.trim()}` : "",
       ]
         .filter(Boolean)

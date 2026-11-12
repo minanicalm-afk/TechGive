@@ -74,7 +74,7 @@ export function FleetUpgrade() {
               <li>On-site installation and staff handover</li>
             </ul>
             <div className="mt-8">
-              <Button href="/upgrade" variant="copper">
+              <Button href="/upgrades#request" variant="copper">
                 Request a fleet quote
               </Button>
             </div>

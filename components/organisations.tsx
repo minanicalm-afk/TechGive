@@ -44,7 +44,7 @@ export function Organisations() {
               ))}
             </ul>
             <div className="mt-8">
-              <CardLink href="/dispose">Book a collection</CardLink>
+              <CardLink href="/recycling#pickup">Book a collection</CardLink>
             </div>
           </Card>
 
@@ -68,7 +68,7 @@ export function Organisations() {
               ))}
             </dl>
             <div className="mt-8">
-              <CardLink href="/upgrade" variant="cream">
+              <CardLink href="/upgrades#request" variant="cream">
                 Talk through an upgrade
               </CardLink>
             </div>

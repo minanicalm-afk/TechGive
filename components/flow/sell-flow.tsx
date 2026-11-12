@@ -16,7 +16,7 @@ import {
 import { messages, whatsappHref } from "@/lib/site";
 
 const control =
-  "mt-2 w-full rounded-2xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink outline-none focus:border-copper";
+  "mt-2 w-full rounded-2xl border border-slate-200 bg-[#f4fbf6] px-4 py-3 text-sm text-[#0b1b16] outline-none placeholder:text-slate-400 focus:border-[#16a34a]";
 
 const steps = ["Gadget", "Details", "Photos", "Your info", "Review"] as const;
 type Step = 1 | 2 | 3 | 4 | 5;
@@ -197,29 +197,29 @@ export function SellFlow() {
             <li key={label} className="flex min-w-0 flex-1 items-center gap-2">
               <span
                 className={`grid size-8 shrink-0 place-items-center rounded-full text-xs font-semibold ${
-                  done || current ? "bg-moss text-cream" : "bg-ink/10 text-ink-soft"
+                  done || current ? "bg-[#22c55e] text-white" : "bg-[#e7efe9] text-slate-500"
                 }`}
               >
                 {done ? <Check className="size-3.5" /> : number}
               </span>
-              <span className={`hidden truncate text-sm sm:inline ${current ? "font-medium text-ink" : "text-ink-soft"}`}>
+              <span className={`hidden truncate text-sm sm:inline ${current ? "font-semibold text-[#0b1b16]" : "text-slate-500"}`}>
                 {label}
               </span>
-              {index < steps.length - 1 ? <span className="h-px flex-1 bg-ink/15" /> : null}
+              {index < steps.length - 1 ? <span className={`h-px flex-1 ${done ? "bg-[#86efac]" : "bg-slate-200"}`} /> : null}
             </li>
           );
         })}
       </ol>
-      <p className="mt-3 text-sm text-ink-soft sm:hidden">
+      <p className="mt-3 text-sm text-slate-600 sm:hidden">
         {step} of {steps.length} · {steps[step - 1]}
       </p>
 
-      <div className="mt-6 rounded-2xl border border-ink/10 bg-cream p-5 sm:p-8">
+      <div className="mt-6">
         {step === 1 ? (
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copper">What we buy</p>
-            <h2 className="mt-2 font-serif text-3xl tracking-[-0.03em]">What we take in.</h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#16a34a]">What we buy</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#0b1b16]">What we take in.</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
               Computers first, plus TVs, printers, scanners, servers, switches, and faulty cables. Accessories are not bought on their own. Working and repairable items are welcome.
             </p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -227,7 +227,7 @@ export function SellFlow() {
                 <li key={entry.id}>
                   <button
                     type="button"
-                    className="flex h-full w-full flex-col rounded-2xl border border-ink/10 bg-paper p-5 text-left hover:border-copper/50"
+                    className="flex h-full w-full flex-col rounded-2xl border border-slate-200 bg-[#f4fbf6] p-5 text-left hover:border-[#16a34a]/50"
                     onClick={() => {
                       patch({
                         category: entry.id,
@@ -238,10 +238,10 @@ export function SellFlow() {
                       go(2);
                     }}
                   >
-                    <span className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-leaf">Describe it</span>
-                    <span className="mt-3 font-serif text-2xl tracking-[-0.03em]">{entry.label}</span>
-                    <span className="mt-1 text-sm text-ink-soft">{entry.blurb}</span>
-                    <span className="mt-4 text-sm font-medium text-copper">Continue</span>
+                    <span className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[#15803d]">Describe it</span>
+                    <span className="mt-3 text-2xl font-extrabold tracking-tight text-[#0b1b16]">{entry.label}</span>
+                    <span className="mt-1 text-sm text-slate-600">{entry.blurb}</span>
+                    <span className="mt-4 text-sm font-medium text-[#16a34a]">Continue</span>
                   </button>
                 </li>
               ))}
@@ -251,12 +251,12 @@ export function SellFlow() {
 
         {step === 2 && item ? (
           <div>
-            <h2 className="font-serif text-3xl tracking-[-0.03em]">Tell us about your {item.label.toLowerCase()}</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1b16]">Tell us about your {item.label.toLowerCase()}</h2>
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
               {item.id !== "cables" ? (
                 <>
                   <label className="block text-sm font-medium" htmlFor="brand">
-                    Brand <span className="text-copper">*</span>
+                    Brand <span className="text-[#16a34a]">*</span>
                     <input
                       id="brand"
                       className={control}
@@ -266,7 +266,7 @@ export function SellFlow() {
                     />
                   </label>
                   <label className="block text-sm font-medium" htmlFor="model">
-                    Model <span className="text-copper">*</span>
+                    Model <span className="text-[#16a34a]">*</span>
                     <input
                       id="model"
                       className={control}
@@ -287,7 +287,7 @@ export function SellFlow() {
                     value={draft.specs}
                     onChange={(event) => patch({ specs: event.target.value })}
                   />
-                  <span className="mt-1 block font-normal text-ink-soft">Optional, but it helps the price.</span>
+                  <span className="mt-1 block font-normal text-slate-600">Optional, but it helps the price.</span>
                 </label>
               ) : null}
               <label className="block text-sm font-medium" htmlFor="age">
@@ -305,7 +305,7 @@ export function SellFlow() {
 
             <fieldset className="mt-6">
               <legend className="text-sm font-medium">
-                Condition <span className="text-copper">*</span>
+                Condition <span className="text-[#16a34a]">*</span>
               </legend>
               <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 {conditions.map((condition) => {
@@ -316,12 +316,12 @@ export function SellFlow() {
                       type="button"
                       aria-pressed={selected}
                       className={`rounded-2xl border px-4 py-3 text-left ${
-                        selected ? "border-leaf bg-leaf/10" : "border-ink/10 bg-paper"
+                        selected ? "border-[#16a34a] bg-[#f4fbf6]" : "border-slate-200 bg-white"
                       }`}
                       onClick={() => patch({ condition: condition.id })}
                     >
                       <span className="block text-sm font-semibold">{condition.label}</span>
-                      <span className="mt-1 block text-sm text-ink-soft">{condition.hint}</span>
+                      <span className="mt-1 block text-sm text-slate-600">{condition.hint}</span>
                     </button>
                   );
                 })}
@@ -336,7 +336,7 @@ export function SellFlow() {
                     type="button"
                     aria-pressed={draft.powersOn === true}
                     className={`rounded-full px-4 py-2.5 text-sm font-medium ${
-                      draft.powersOn === true ? "bg-moss text-cream" : "bg-paper text-ink"
+                      draft.powersOn === true ? "bg-[#22c55e] text-white" : "bg-[#f4fbf6] text-[#0b1b16]"
                     }`}
                     onClick={() => patch({ powersOn: true })}
                   >
@@ -346,7 +346,7 @@ export function SellFlow() {
                     type="button"
                     aria-pressed={draft.powersOn === false}
                     className={`rounded-full px-4 py-2.5 text-sm font-medium ${
-                      draft.powersOn === false ? "bg-moss text-cream" : "bg-paper text-ink"
+                      draft.powersOn === false ? "bg-[#22c55e] text-white" : "bg-[#f4fbf6] text-[#0b1b16]"
                     }`}
                     onClick={() => patch({ powersOn: false })}
                   >
@@ -367,7 +367,7 @@ export function SellFlow() {
                   value={draft.asking}
                   onChange={(event) => patch({ asking: event.target.value })}
                 />
-                <span className="mt-1 block font-normal text-ink-soft">
+                <span className="mt-1 block font-normal text-slate-600">
                   Required. The team reviews this before any range is shown.
                 </span>
               </label>
@@ -390,12 +390,12 @@ export function SellFlow() {
               </label>
             ) : null}
 
-            {error ? <p className="mt-4 text-sm text-copper">{error}</p> : null}
+            {error ? <p className="mt-4 text-sm text-[#16a34a]">{error}</p> : null}
             <div className="mt-6 flex items-center justify-between gap-3">
-              <Button type="button" variant="ghost" onClick={() => go(1)}>
+              <Button type="button" variant="ghost" className="border-slate-200 bg-white hover:bg-[#f4fbf6]" onClick={() => go(1)}>
                 Back
               </Button>
-              <Button type="button" onClick={continueFromDetails}>
+              <Button type="button" variant="green" onClick={continueFromDetails}>
                 Continue
               </Button>
             </div>
@@ -404,8 +404,8 @@ export function SellFlow() {
 
         {step === 3 ? (
           <div>
-            <h2 className="font-serif text-3xl tracking-[-0.03em]">Show the item.</h2>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1b16]">Show the item.</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
               Photos are required. They stay on this page until you send them in the WhatsApp chat. A team member reviews them before an offer is shown.
             </p>
             <label className="mt-6 block text-sm font-medium" htmlFor="photos">
@@ -415,14 +415,14 @@ export function SellFlow() {
                 type="file"
                 accept="image/*"
                 multiple
-                className={`${control} file:mr-3 file:rounded-full file:border-0 file:bg-copper file:px-3 file:py-1.5 file:text-xs file:text-cream`}
+                className={`${control} file:mr-3 file:rounded-full file:border-0 file:bg-[#22c55e] file:px-3 file:py-1.5 file:text-xs file:text-white`}
                 onChange={(event) => replacePhotos(Array.from(event.target.files ?? []).slice(0, 6))}
               />
             </label>
             {previews.length > 0 ? (
               <ul className="mt-4 grid grid-cols-3 gap-2">
                 {previews.map((url, index) => (
-                  <li key={url} className="overflow-hidden rounded-xl bg-paper">
+                  <li key={url} className="overflow-hidden rounded-xl bg-[#f4fbf6]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={url} alt="" className="aspect-square w-full object-cover" />
                     <p className="truncate px-2 py-1 text-xs">{draft.photos[index]?.name}</p>
@@ -446,12 +446,12 @@ export function SellFlow() {
                 No. I have other proof of ownership, or I will sign a written agreement.
               </label>
             </fieldset>
-            {error ? <p className="mt-4 text-sm text-copper">{error}</p> : null}
+            {error ? <p className="mt-4 text-sm text-[#16a34a]">{error}</p> : null}
             <div className="mt-6 flex items-center justify-between gap-3">
-              <Button type="button" variant="ghost" onClick={() => go(2)}>
+              <Button type="button" variant="ghost" className="border-slate-200 bg-white hover:bg-[#f4fbf6]" onClick={() => go(2)}>
                 Back
               </Button>
-              <Button type="button" onClick={continueFromPhotos}>
+              <Button type="button" variant="green" onClick={continueFromPhotos}>
                 Continue
               </Button>
             </div>
@@ -460,7 +460,7 @@ export function SellFlow() {
 
         {step === 4 ? (
           <div>
-            <h2 className="font-serif text-3xl tracking-[-0.03em]">Who should we reply to?</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1b16]">Who should we reply to?</h2>
             <div className="mt-6 grid gap-5">
               <label className="flex items-start gap-3 text-sm">
                 <input
@@ -513,7 +513,7 @@ export function SellFlow() {
                     type="button"
                     aria-pressed={draft.handover === "bring"}
                     className={`rounded-full px-4 py-2.5 text-sm font-medium ${
-                      draft.handover === "bring" ? "bg-moss text-cream" : "bg-paper text-ink"
+                      draft.handover === "bring" ? "bg-[#22c55e] text-white" : "bg-[#f4fbf6] text-[#0b1b16]"
                     }`}
                     onClick={() => patch({ handover: "bring" })}
                   >
@@ -523,7 +523,7 @@ export function SellFlow() {
                     type="button"
                     aria-pressed={draft.handover === "collect"}
                     className={`rounded-full px-4 py-2.5 text-sm font-medium ${
-                      draft.handover === "collect" ? "bg-moss text-cream" : "bg-paper text-ink"
+                      draft.handover === "collect" ? "bg-[#22c55e] text-white" : "bg-[#f4fbf6] text-[#0b1b16]"
                     }`}
                     onClick={() => patch({ handover: "collect" })}
                   >
@@ -532,12 +532,12 @@ export function SellFlow() {
                 </div>
               </fieldset>
             </div>
-            {error ? <p className="mt-4 text-sm text-copper">{error}</p> : null}
+            {error ? <p className="mt-4 text-sm text-[#16a34a]">{error}</p> : null}
             <div className="mt-6 flex items-center justify-between gap-3">
-              <Button type="button" variant="ghost" onClick={() => go(3)}>
+              <Button type="button" variant="ghost" className="border-slate-200 bg-white hover:bg-[#f4fbf6]" onClick={() => go(3)}>
                 Back
               </Button>
-              <Button type="button" onClick={continueFromInfo}>
+              <Button type="button" variant="green" onClick={continueFromInfo}>
                 Review
               </Button>
             </div>
@@ -548,11 +548,12 @@ export function SellFlow() {
           <div>
             {answer === "cancelled" ? (
               <div>
-                <h2 className="font-serif text-3xl tracking-[-0.03em]">This request is cancelled.</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">Nothing is collected. You can start another description whenever you want.</p>
+                <h2 className="text-3xl font-extrabold tracking-tight text-[#0b1b16]">This request is cancelled.</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">Nothing is collected. You can start another description whenever you want.</p>
                 <div className="mt-6">
                   <Button
                     type="button"
+                    variant="green"
                     onClick={() => {
                       replacePhotos([]);
                       setDraft(empty);
@@ -567,28 +568,28 @@ export function SellFlow() {
               </div>
             ) : (
               <>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-copper">For the team to review</p>
-                <h2 className="mt-3 font-serif text-4xl tracking-[-0.03em]">No price is shown yet.</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#16a34a]">For the team to review</p>
+                <h2 className="mt-3 text-4xl font-extrabold tracking-tight text-[#0b1b16]">No price is shown yet.</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   Reference {reference}. A Josachi team reviews the photos before an offer is shown. The offer is a
                   range, about 20–30% depending on condition, and it is confirmed after inspection. It is an estimate,
                   it can change, and it does not expire. Payment is after inspection, in cash, M-Pesa, or by bank.
                   You asked for {formatKes(Number(draft.asking.replace(/\D/g, "")))}.
                 </p>
                 {answer === "accepted" ? (
-                  <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-leaf px-4 py-2 text-sm font-medium text-cream">
+                  <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#16a34a] px-4 py-2 text-sm font-medium text-white">
                     <Check />
                     Sent. WhatsApp is open with your details. Add the photos in that chat.
                   </p>
                 ) : (
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                    <Button type="button" onClick={accept}>
+                    <Button type="button" variant="green" onClick={accept}>
                       Send for review
                     </Button>
-                    <Button type="button" variant="ghost" onClick={bargain}>
+                    <Button type="button" variant="ghost" className="border-slate-200 bg-white hover:bg-[#f4fbf6]" onClick={bargain}>
                       Bargain on WhatsApp
                     </Button>
-                    <Button type="button" variant="ghost" onClick={() => setAnswer("cancelled")}>
+                    <Button type="button" variant="ghost" className="border-slate-200 bg-white hover:bg-[#f4fbf6]" onClick={() => setAnswer("cancelled")}>
                       Cancel
                     </Button>
                   </div>
@@ -599,13 +600,13 @@ export function SellFlow() {
         ) : null}
       </div>
 
-      <p className="mt-5 text-center text-sm text-ink-soft">
+      <p className="mt-5 text-center text-sm text-slate-600">
         Prefer to talk first?{" "}
-        <a href={whatsappHref(messages.sell)} target="_blank" rel="noopener noreferrer" className="font-medium text-leaf underline underline-offset-4">
+        <a href={whatsappHref(messages.sell)} target="_blank" rel="noopener noreferrer" className="font-medium text-[#15803d] underline underline-offset-4">
           Message us on WhatsApp
         </a>{" "}
         or{" "}
-        <Link href="/contact" className="font-medium text-leaf underline underline-offset-4">
+        <Link href="/contact" className="font-medium text-[#15803d] underline underline-offset-4">
           visit us in Juja
         </Link>
         .

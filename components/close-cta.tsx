@@ -20,7 +20,7 @@ export function CloseCta() {
             <Button href="/sell" variant="ghost-light">
               Sell to TechGive
             </Button>
-            <Button href="/dispose" variant="ghost-light">
+            <Button href="/recycling#pickup" variant="ghost-light">
               Book a collection
             </Button>
           </div>
