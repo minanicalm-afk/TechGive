@@ -14,7 +14,7 @@ const paths = [
   {
     title: "Donate",
     copy: "A working or repairable computer, cleaned and fixed, then given to a less privileged school.",
-    href: "/donate",
+    href: "/donations",
     image: "/final-svc-donate-2.jpg",
     cta: "Donate a device",
   },
@@ -28,14 +28,14 @@ const paths = [
   {
     title: "Recycle",
     copy: "Dead equipment is collected for a fee. What cannot be repaired is disposed of responsibly.",
-    href: "/dispose",
+    href: "/recycling",
     image: "/final-svc-recycle-2.jpg",
     cta: "Book a collection",
   },
   {
     title: "Upgrade",
     copy: "An organisation hands in what it has and moves to a newer generation of the same kind.",
-    href: "/upgrade",
+    href: "/upgrades",
     image: "/final-svc-upgrade-2.jpg",
     cta: "Plan an upgrade",
   },
@@ -71,10 +71,10 @@ export default function AboutPage() {
           text="TechGive is the Josachi desk in Juja. We collect electronics from people, companies, and institutions, then put the repairable ones back to work."
         >
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/donate" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
+            <Link href="/donations#note" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
               Donate a device
             </Link>
-            <Link href="/home4/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+            <Link href="/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
               Visit the desk
             </Link>
           </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </div>
           <div>
             <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE DESK</p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0c2340] sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
               From a doorway in Juja to a school that is short of machines.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -95,7 +95,7 @@ export default function AboutPage() {
             <p className="mt-3 text-base leading-relaxed text-slate-600">
               If you are selling, the offer is about 20–30% of the assessed desk price. The team confirms the range after inspection, and it can change. Payment follows that visit.
             </p>
-            <p className="mt-6 text-sm font-semibold text-[#0c2340]">{contact.place}</p>
+            <p className="mt-6 text-sm font-semibold text-[#0b1b16]">{contact.place}</p>
             <p className="mt-1 text-sm text-slate-500">{contact.hours} Nairobi is on-site collection only.</p>
           </div>
         </section>
@@ -103,7 +103,7 @@ export default function AboutPage() {
         <section className="bg-[#f4fbf6] py-16 lg:py-20">
           <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
             <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">WHAT COMES IN</p>
-            <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0c2340] sm:text-4xl">
+            <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
               Four ways a machine reaches the bench.
             </h2>
             <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -113,7 +113,7 @@ export default function AboutPage() {
                     <Image src={item.image} alt="" fill className="object-contain p-4" sizes="280px" />
                   </div>
                   <div className="p-5">
-                    <h3 className="text-lg font-extrabold text-[#0c2340]">{item.title}</h3>
+                    <h3 className="text-lg font-extrabold text-[#0b1b16]">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.copy}</p>
                     <Link href={item.href} className="mt-4 inline-flex text-sm font-semibold text-[#15803d] hover:text-[#166534]">
                       {item.cta} →
@@ -127,7 +127,7 @@ export default function AboutPage() {
 
         <section className="mx-auto w-full max-w-[96rem] px-4 py-16 sm:px-6 lg:py-20">
           <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE PATH</p>
-          <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0c2340] sm:text-4xl">
+          <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
             What happens after you leave it with us.
           </h2>
           <ol className="mt-10 grid gap-6 md:grid-cols-4">
@@ -136,7 +136,7 @@ export default function AboutPage() {
                 <span className="grid size-12 place-items-center rounded-full bg-[#22c55e] text-lg font-extrabold text-white">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-extrabold text-[#0c2340]">{title}</h3>
+                <h3 className="mt-4 text-lg font-extrabold text-[#0b1b16]">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{copy}</p>
               </li>
             ))}
@@ -144,7 +144,7 @@ export default function AboutPage() {
         </section>
 
         <section className="px-4 pb-16 sm:px-6">
-          <ul className="mx-auto grid w-full max-w-[96rem] gap-3 rounded-[2rem] bg-[#062c3c] px-4 py-8 text-white sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
+          <ul className="mx-auto grid w-full max-w-[96rem] gap-3 rounded-[2rem] bg-[#123d2b] px-4 py-8 text-white sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
             {marks.map(([value, label]) => (
               <li key={label} className="px-2 py-2">
                 <p className="text-3xl font-extrabold text-[#86efac]">{value}</p>

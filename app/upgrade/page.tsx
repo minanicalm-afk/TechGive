@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { FlowPage } from "@/components/flow/flow-page";
 import { PathForm } from "@/components/flow/path-form";
+import { Home4Footer } from "@/components/home4-footer";
 
 export const metadata: Metadata = {
   title: "Plan a fleet upgrade",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 export default function UpgradePage() {
   return (
+    <>
     <FlowPage
       eyebrow="Upgrade"
       title="Old working machines can leave the building."
@@ -21,7 +23,9 @@ export default function UpgradePage() {
         "Working machines that can be saved go to less privileged schools.",
       ]}
     >
-      <PathForm kind="upgrade" />
+      <PathForm kind="upgrade" tone="home" />
     </FlowPage>
+    <Home4Footer />
+    </>
   );
 }

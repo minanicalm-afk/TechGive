@@ -1,31 +1,87 @@
-const steps = [
-  ["1", "Donate or Sell", "Tell us what you have: a laptop, desktop, parts, or a machine that needs repair."],
-  ["2", "Get a Quote", "A sale is about 20–30% of the assessed desk price, confirmed after we inspect it."],
-  ["3", "Accept or Negotiate", "Confirm on WhatsApp, or bring it to the desk in Juja."],
-  ["4", "We Handle the Rest", "We repair, upgrade, place it with a school, or recycle what cannot be reused."],
+import Link from "next/link";
+
+const paths = [
+  {
+    title: "Donate",
+    summary: "A working or repairable computer is repaired, then given to a less privileged school.",
+    href: "/donations#note",
+    cta: "Donate a device",
+    steps: [
+      "Tell us the machine, and whether it powers on. A missing charger is fine.",
+      "Drop it at the Juja shop, or ask for collection in Juja or Nairobi.",
+      "We clean and repair it, then place it with a school.",
+    ],
+  },
+  {
+    title: "Dispose",
+    summary: "Dead equipment is a paid collection. We do not buy machines that cannot be repaired.",
+    href: "/dispose",
+    cta: "Schedule a pickup",
+    steps: [
+      "Tell us what is there, roughly how many pieces, and the town.",
+      "We confirm the collection fee before we travel. A van is for 20 pieces or more.",
+      "Repairable parts stay in service. The rest is recycled.",
+    ],
+  },
+  {
+    title: "Upgrade",
+    summary: "An organisation hands in its fleet and receives a newer generation of the same kind.",
+    href: "/upgrade",
+    cta: "Request an upgrade",
+    steps: [
+      "Tell us how many machines, and whether they are laptops, desktops, or both.",
+      "We plan the swap. Laptops stay laptops. Desktops stay desktops.",
+      "We collect the old machines and deliver the new ones ready to use.",
+    ],
+  },
+  {
+    title: "Sell to us",
+    summary: "We buy working electronics from you. The range is confirmed after we inspect the item.",
+    href: "/sell",
+    cta: "Get a quote",
+    steps: [
+      "Send the details and photos of the laptop, desktop, or other device.",
+      "The offer is about 20–30% of the assessed desk price, and it can change after inspection.",
+      "Confirm on WhatsApp, or bring it to the desk in Juja.",
+    ],
+  },
 ] as const;
 
 export function FinalHow() {
   return (
-    <section id="how" className="scroll-mt-24 bg-white py-16">
-      <div className="mx-auto w-full max-w-[96rem] px-4 text-center sm:px-6">
-        <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">HOW IT WORKS</p>
-        <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#0c2340] sm:text-4xl">
-          Simple Steps to Give &amp; Get
-        </h2>
-        <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map(([n, title, copy], index) => (
-            <li key={n} className="relative">
-              {index < steps.length - 1 ? (
-                <span className="absolute top-5 right-0 hidden text-slate-300 lg:block" aria-hidden="true">
-                  →
-                </span>
-              ) : null}
-              <span className="mx-auto grid size-10 place-items-center rounded-full bg-[#22c55e] text-sm font-bold text-white">
-                {n}
-              </span>
-              <h3 className="mt-4 font-bold text-[#0c2340]">{title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-slate-500">{copy}</p>
+    <section id="how" className="scroll-mt-24 bg-white py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">HOW IT WORKS</p>
+          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+            Four ways a machine leaves your hands
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+            Donate it, dispose of what is dead, upgrade a fleet, or sell it to us. Each path starts with a short note to the desk.
+          </p>
+        </div>
+
+        <ol className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {paths.map((path) => (
+            <li key={path.title} className="flex flex-col rounded-[1.4rem] bg-[#f4fbf6] p-6 text-left">
+              <h3 className="text-lg font-extrabold tracking-tight text-[#0b1b16]">{path.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">{path.summary}</p>
+              <ol className="mt-5 space-y-3">
+                {path.steps.map((step, index) => (
+                  <li key={step} className="flex gap-3 text-sm leading-relaxed text-slate-700">
+                    <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#22c55e] text-xs font-bold text-white">
+                      {index + 1}
+                    </span>
+                    <span className="pt-0.5">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <Link href={path.href} className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-semibold text-[#15803d] hover:text-[#166534]">
+                {path.cta}
+                <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </li>
           ))}
         </ol>

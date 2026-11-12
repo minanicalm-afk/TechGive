@@ -14,7 +14,7 @@ export function CloseCta() {
             The computer you are finished with may be the one someone is waiting on.
           </h2>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="/donate" variant="cream">
+            <Button href="/donations#note" variant="cream">
               Donate a device
             </Button>
             <Button href="/sell" variant="ghost-light">

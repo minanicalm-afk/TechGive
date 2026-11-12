@@ -66,7 +66,7 @@ export function DonationStory() {
               environmentally friendly way.
             </p>
             <div className="mt-8">
-              <Button href="/donate">Donate a device</Button>
+              <Button href="/donations#note">Donate a device</Button>
             </div>
           </div>
 
