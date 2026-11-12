@@ -84,9 +84,10 @@ export function Home4Banner({
             className="object-cover object-center"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
-          <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#071a12] to-transparent" />
+          <div className="absolute inset-0 bg-[#071a12]/30" />
+          <div className="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-[#071a12] to-transparent" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071a12] from-0% via-[#071a12] via-40% to-transparent lg:via-[38%]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071a12] from-0% via-[#071a12]/80 via-[44%] to-[#071a12]/50" />
         <div className="relative mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-end px-4 pt-32 pb-16 sm:min-h-[42rem] sm:px-6 sm:pt-36 sm:pb-20">
           <div className="max-w-xl">{copy}</div>
         </div>
