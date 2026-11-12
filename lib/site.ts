@@ -45,6 +45,7 @@ export const messages = {
 
 export const themedPaths = [
   "/",
+  "/home1",
   "/about",
   "/faq",
   "/donations",

@@ -26,17 +26,15 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
     <section className={`relative overflow-hidden text-cream ${motion ? "hero-motion" : "bg-ink"}`}>
       {motion ? (
         <div className="pointer-events-none absolute inset-0">
-          <div className="hero-pile">
-            <Image
-              src="/hero-pile.jpg"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-right-bottom"
-            />
-          </div>
-          <div className="hero-wash" />
+          <Image
+            src="/hero-ring.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#050807] from-0% via-[#050807]/70 via-[32%] to-transparent to-[62%]" />
         </div>
       ) : image ? (
         <>
@@ -79,23 +77,52 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
       <div
         className={
           scenic
-            ? "relative z-10 mx-auto grid min-h-[36rem] w-full max-w-[96rem] items-center gap-8 px-4 pt-28 pb-32 sm:px-6 lg:grid-cols-2 lg:pt-32 lg:pb-36"
+            ? "relative z-10 mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-center px-4 pt-28 pb-32 sm:px-6 lg:pt-32 lg:pb-36"
             : "relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-24 text-center sm:px-8 lg:pt-40 lg:pb-28"
         }
       >
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-copper-soft">
-            Computer sales & repair · Community Support
-          </p>
+          {scenic ? (
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#22c55e]/70 bg-[#071a12]/50 px-3 py-1.5 text-sm font-medium text-[#4ade80]">
+                <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true" fill="none">
+                  <path d="M8 1.6 13 3.6v4.2c0 3.2-2.1 5.4-5 6.6-2.9-1.2-5-3.4-5-6.6V3.6L8 1.6Z" stroke="currentColor" strokeWidth="1.4" />
+                  <path d="M5.6 8.1 7.2 9.7 10.5 6.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Files cleared before handover
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/50 bg-[#071a12]/50 px-3 py-1.5 text-sm font-medium text-sky-300">
+                <svg viewBox="0 0 16 16" className="size-3.5" aria-hidden="true" fill="currentColor">
+                  <path d="M7.1 1.4h1.8l.3 1.7a4.7 4.7 0 0 1 1.1.6l1.6-.7 1.3 1.3-.7 1.6c.2.3.4.7.6 1.1l1.7.3v1.8l-1.7.3a4.7 4.7 0 0 1-.6 1.1l.7 1.6-1.3 1.3-1.6-.7a4.7 4.7 0 0 1-1.1.6l-.3 1.7H7.1l-.3-1.7a4.7 4.7 0 0 1-1.1-.6l-1.6.7-1.3-1.3.7-1.6a4.7 4.7 0 0 1-.6-1.1l-1.7-.3V7.1l1.7-.3c.2-.4.4-.8.6-1.1L3 4.1 4.3 2.8l1.6.7c.3-.2.7-.4 1.1-.6l.1-1.5ZM8 10.1A2.1 2.1 0 1 0 8 5.9a2.1 2.1 0 0 0 0 4.2Z" />
+                </svg>
+                Repair, reuse, and upgrade
+              </span>
+            </div>
+          ) : (
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-copper-soft">
+              Computer sales & repair · Community Support
+            </p>
+          )}
           <h1
             className={
               scenic
-                ? "mt-5 max-w-xl font-serif text-5xl leading-[0.98] tracking-[-0.035em] sm:text-6xl"
+                ? "mt-6 max-w-5xl font-sans text-[2.6rem] font-extrabold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl"
                 : "mt-5 font-serif text-[3.15rem] leading-[0.98] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.4rem]"
             }
           >
-            Unused electronics still have{" "}
-            <em className="font-medium text-copper-soft italic">work to do.</em>
+            {scenic ? (
+              <>
+                <span className="block sm:whitespace-nowrap">
+                  Give <span className="text-[#3dff6a] [text-shadow:0_0_24px_rgba(61,255,106,0.55)]">technology</span>
+                </span>
+                <span className="block">a second life.</span>
+              </>
+            ) : (
+              <>
+                Unused electronics still have{" "}
+                <em className="font-medium text-copper-soft italic">work to do.</em>
+              </>
+            )}
           </h1>
           <p
             className={

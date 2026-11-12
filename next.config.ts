@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
     return [
       { source: "/final", destination: "/", permanent: false },
       { source: "/home", destination: "/", permanent: false },
-      { source: "/home1", destination: "/", permanent: false },
       { source: "/home2", destination: "/", permanent: false },
       { source: "/home3", destination: "/", permanent: false },
       { source: "/home4", destination: "/", permanent: false },
