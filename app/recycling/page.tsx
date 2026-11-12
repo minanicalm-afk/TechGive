@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PathForm } from "@/components/flow/path-form";
 import { Home4Service } from "@/components/home4-service";
 
 export const metadata: Metadata = {
@@ -10,6 +11,8 @@ export default function RecyclingPage() {
   return (
     <Home4Service
       image="/final-hero.jpg"
+      imageAlt="A recycling mark made from computer circuit boards"
+      imageRight
       eyebrow="COLLECTION FOR RECYCLING"
       title={
         <>
@@ -18,7 +21,7 @@ export default function RecyclingPage() {
         </>
       }
       text="Broken boards, dead computers, and equipment that will not power on are a paid collection. We do not buy them. What cannot be repaired is recycled."
-      primary={{ href: "/dispose", label: "Schedule a pickup" }}
+      primary={{ href: "#pickup", label: "Schedule a pickup" }}
       secondary={{ href: "/contact", label: "Describe the load" }}
       storyTitle="This is disposal, not a buyback."
       story={[
@@ -38,6 +41,36 @@ export default function RecyclingPage() {
         ["We take it away", "Repairable parts stay in service. The rest is recycled."],
       ]}
       note="A single dead laptop can come to the Juja desk. A van is for a larger clear-out."
+      form={
+        <section id="pickup" className="scroll-mt-24 bg-[#f4fbf6] py-14 lg:py-20">
+          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+            <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE COLLECTION NOTE</p>
+            <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+              Tell the desk what is leaving.
+            </h2>
+            <div className="mt-10 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
+              <div className="rounded-[2rem] bg-white p-6 shadow-[0_18px_40px_-28px_rgba(15,23,42,0.45)] sm:p-8">
+                <PathForm kind="dispose" tone="home" />
+              </div>
+              <aside className="h-fit rounded-[2rem] bg-[#123d2b] p-6 text-white sm:p-8">
+                <p className="text-xs font-bold tracking-[0.18em] text-[#86efac]">BEFORE THE VAN COMES</p>
+                <ol className="mt-5 space-y-4">
+                  {[
+                    "A list is enough to start. A PDF inventory can be sent on WhatsApp.",
+                    "The charge is confirmed before the visit is booked.",
+                    "What can still be repaired may be given to a school. The rest is recycled.",
+                  ].map((step, index) => (
+                    <li key={step} className="grid grid-cols-[2rem_1fr] gap-2 text-sm leading-relaxed text-white/80">
+                      <span className="text-lg font-extrabold text-[#86efac]">0{index + 1}</span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </aside>
+            </div>
+          </div>
+        </section>
+      }
     />
   );
 }

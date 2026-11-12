@@ -14,7 +14,6 @@ const finalServices = [
   { href: "/recycling", label: "Collection for Recycling" },
   { href: "/upgrades", label: "System Upgrades" },
   { href: "/sell", label: "Sell to Us" },
-  { href: "/repair", label: "Repair Services" },
 ] as const;
 
 const finalNav = [

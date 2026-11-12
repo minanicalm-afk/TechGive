@@ -15,7 +15,7 @@ const paths = [
   {
     title: "Dispose",
     summary: "Dead equipment is a paid collection. We do not buy machines that cannot be repaired.",
-    href: "/dispose",
+    href: "/recycling#pickup",
     cta: "Schedule a pickup",
     steps: [
       "Tell us what is there, roughly how many pieces, and the town.",
@@ -26,7 +26,7 @@ const paths = [
   {
     title: "Upgrade",
     summary: "An organisation hands in its fleet and receives a newer generation of the same kind.",
-    href: "/upgrade",
+    href: "/upgrades#request",
     cta: "Request an upgrade",
     steps: [
       "Tell us how many machines, and whether they are laptops, desktops, or both.",
