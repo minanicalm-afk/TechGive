@@ -77,7 +77,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
       <div
         className={
           scenic
-            ? "relative z-10 mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-center px-4 pt-28 pb-32 sm:px-6 lg:pt-32 lg:pb-36"
+            ? "relative z-10 mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-center px-4 pt-28 pb-20 sm:px-6 lg:pt-32 lg:pb-24"
             : "relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-24 text-center sm:px-8 lg:pt-40 lg:pb-28"
         }
       >
@@ -188,7 +188,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
 
     {scenic ? (
       <section className="bg-white">
-        <ul className="mx-auto grid w-full max-w-[96rem] gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:py-14">
+        <ul className="mx-auto grid w-full max-w-[96rem] gap-8 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:py-8">
           {features.map((item) => (
             <li key={item.title} className="text-center">
               <span className="mx-auto grid size-16 place-items-center rounded-full bg-emerald-50 text-[#16a34a]">
@@ -250,3 +250,4 @@ function FeatureIcon({ name }: { name: (typeof features)[number]["icon"] }) {
     </svg>
   );
 }
+

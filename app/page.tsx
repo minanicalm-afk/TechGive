@@ -6,12 +6,14 @@ import { FinalServices } from "@/components/final-services";
 import { FinalStories } from "@/components/final-stories";
 import { Hero } from "@/components/hero";
 import { Home4Footer } from "@/components/home4-footer";
+import { HomeAbout } from "@/components/home-about";
+import { HomeFaq } from "@/components/home-faq";
 import { PartnerStrip } from "@/components/partner-carousel";
 
 export const metadata: Metadata = {
   title: { absolute: "TechGive — Donate · Repair · Reuse · Empower" },
   description:
-    "Donate, sell, upgrade, or responsibly recycle computers and electronics in Juja and Nairobi.",
+    "Donate, sell, upgrade, or responsibly recycle computers and electronics in Juja and Nairobi. Offers are estimates until the desk inspects the machine.",
 };
 
 export default function HomePage() {
@@ -23,7 +25,9 @@ export default function HomePage() {
         <FinalServices />
         <FinalImpact />
         <FinalHow />
+        <HomeAbout />
         <FinalStories />
+        <HomeFaq />
         <FinalCta />
       </main>
       <Home4Footer />

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Home4Banner, Home4Footer } from "@/components/home4-footer";
-import { contact } from "@/lib/site";
+import { AboutPath } from "@/components/about-path";
+import { AboutStats } from "@/components/about-stats";
+import { FinalCta } from "@/components/final-cta";
+import { Home4Footer } from "@/components/home4-footer";
 
 export const metadata: Metadata = {
   title: { absolute: "TechGive — About Us" },
@@ -10,149 +12,168 @@ export const metadata: Metadata = {
     "Josachi collects, repairs, and recycles computers in Juja and Nairobi. Repairable machines go to less privileged schools.",
 };
 
-const paths = [
+const chips = [
+  { href: "/donations", label: "Donate" },
+  { href: "/repair", label: "Repair" },
+  { href: "/recycling", label: "Recycle" },
+  { href: "/sell", label: "Sell" },
+  { href: "/upgrades", label: "Upgrade" },
+] as const;
+
+const values = [
   {
-    title: "Donate",
-    copy: "A working or repairable computer, cleaned and fixed, then given to a less privileged school.",
-    href: "/donations",
-    image: "/final-svc-donate-2.jpg",
-    cta: "Donate a device",
+    mark: "1",
+    title: "Fair and transparent",
+    copy: "Offers are confirmed after inspection, and fees are agreed before we travel.",
   },
   {
-    title: "Sell",
-    copy: "About 20–30% of the assessed desk price. The range is confirmed after we inspect it.",
-    href: "/sell",
-    image: "/final-svc-sell.jpg",
-    cta: "Get a quote",
+    mark: "2",
+    title: "Reuse first",
+    copy: "If the machine can be saved, it stays in service. The bench recycles only what cannot be revived.",
   },
   {
-    title: "Recycle",
-    copy: "Dead equipment is collected for a fee. What cannot be repaired is disposed of responsibly.",
-    href: "/recycling",
-    image: "/final-svc-recycle-2.jpg",
-    cta: "Book a collection",
+    mark: "3",
+    title: "Community impact",
+    copy: "Repairable machines go to schools and people with less access to technology.",
   },
   {
-    title: "Upgrade",
-    copy: "An organisation hands in what it has and moves to a newer generation of the same kind.",
-    href: "/upgrades",
-    image: "/final-svc-upgrade-2.jpg",
-    cta: "Plan an upgrade",
+    mark: "4",
+    title: "Honest about limits",
+    copy: "Data recovery is not promised, and we say so up front.",
   },
 ] as const;
 
-const pathSteps = [
-  ["It arrives", "Drop it at the Juja shop, or ask for collection in Juja or Nairobi."],
-  ["We log it", "The note stays with the machine: what arrived, and whether it powers on."],
-  ["The bench decides", "Repairable computers are cleaned and fixed. The rest is kept for parts or recycled."],
-  ["Someone receives it", "A finished machine goes to a less privileged school, for study or a class."],
-] as const;
-
-const marks = [
-  ["500+", "Devices repaired"],
-  ["1,000+", "People supported"],
-  ["5 Tons", "E-waste recycled"],
-  ["50+", "Organisations assisted"],
+const team = [
+  { name: "Founder", role: "Josachi Computers" },
+  { name: "Co-founder", role: "TechGive" },
+  { name: "The bench", role: "Repairs · Juja shop" },
+  { name: "Collection", role: "Juja & Nairobi" },
 ] as const;
 
 export default function AboutPage() {
   return (
     <>
       <main id="main" className="bg-white">
-        <Home4Banner
-          image="/final-impact.jpg"
-          eyebrow="ABOUT US"
-          title={
-            <>
-              A spare computer
-              <span className="mt-1 block text-[#86efac]">still has a class to reach.</span>
-            </>
-          }
-          text="TechGive is the Josachi desk in Juja. We collect electronics from people, companies, and institutions, then put the repairable ones back to work."
-        >
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/donations#note" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
-              Donate a device
-            </Link>
-            <Link href="/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
-              Visit the desk
-            </Link>
-          </div>
-        </Home4Banner>
-
-        <section className="mx-auto grid w-full max-w-[96rem] items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-          <div className="relative min-h-[26rem] overflow-hidden rounded-[2rem]">
-            <Image src="/donation-bench.jpg" alt="Computers on the repair bench." fill className="object-cover" sizes="640px" />
-          </div>
-          <div>
-            <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE DESK</p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
-              From a doorway in Juja to a school that is short of machines.
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
-              Donations are not stock for the shop. A laptop or desktop is logged, repaired when that is the honest job, and given to a less privileged school. A missing charger is fine.
+        <section className="relative isolate overflow-hidden bg-[#071a12] text-white">
+          <Image
+            src="/home-impact.jpg"
+            alt="A student using a laptop at a classroom desk"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "center 30%" }}
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071a12] via-[#071a12]/72 via-40% to-[#071a12]/15" />
+          <div className="relative mx-auto flex min-h-[28rem] w-full max-w-[96rem] flex-col justify-end px-4 pt-32 pb-16 sm:min-h-[32rem] sm:px-6 sm:pt-36 sm:pb-20">
+            <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#86efac]">
+              <span className="h-px w-10 bg-[#86efac]" aria-hidden="true" />
+              ABOUT US
             </p>
-            <p className="mt-3 text-base leading-relaxed text-slate-600">
-              If you are selling, the offer is about 20–30% of the assessed desk price. The team confirms the range after inspection, and it can change. Payment follows that visit.
+            <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl">
+              We turn spare computers into classroom machines.
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+              TechGive is the public desk of Josachi Computers in Juja. We collect electronics, repair what can still work, and send finished machines to schools that need them.
             </p>
-            <p className="mt-6 text-sm font-semibold text-[#0b1b16]">{contact.place}</p>
-            <p className="mt-1 text-sm text-slate-500">{contact.hours} Nairobi is on-site collection only.</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/donations#note" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
+                Donate a device
+              </Link>
+              <Link href="/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+                Visit the desk
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className="bg-[#f4fbf6] py-16 lg:py-20">
-          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
-            <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">WHAT COMES IN</p>
-            <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
-              Four ways a machine reaches the bench.
-            </h2>
-            <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {paths.map((item) => (
-                <li key={item.title} className="overflow-hidden rounded-[1.4rem] bg-white shadow-[0_18px_40px_-28px_rgba(15,23,42,0.45)]">
-                  <div className="relative h-44 bg-[radial-gradient(circle_at_55%_45%,#d9f5e4,transparent_70%)]">
-                    <Image src={item.image} alt="" fill className="object-contain p-4" sizes="280px" />
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-extrabold text-[#0b1b16]">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.copy}</p>
-                    <Link href={item.href} className="mt-4 inline-flex text-sm font-semibold text-[#15803d] hover:text-[#166534]">
-                      {item.cta} →
+        <section className="py-16 lg:py-24">
+          <div className="mx-auto grid w-full max-w-[96rem] items-center gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
+            <div className="relative min-h-[22rem] overflow-hidden rounded-[1.75rem] sm:min-h-[28rem]">
+              <Image
+                src="/home-impact.jpg"
+                alt="A student using a refurbished laptop at a classroom desk"
+                fill
+                className="object-cover"
+                style={{ objectPosition: "center 30%" }}
+                sizes="(min-width: 1024px) 46vw, 100vw"
+              />
+            </div>
+            <div>
+              <p className="text-xs font-bold tracking-[0.22em] text-[#16a34a]">OUR MISSION</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-5xl">
+                Technology deserves a longer life.
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
+                We collect, repair and upgrade electronics. Whether you want to donate to a good cause, upgrade your company&apos;s fleet, sell to us for a fair price, or safely dispose of e-waste, we make it simple.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                <li className="border-l-2 border-[#16a34a] pl-3">Recycle electronics for a cleaner, safer environment.</li>
+                <li className="border-l-2 border-[#16a34a] pl-3">Upgrade an organisation&apos;s electronics when the fleet is ready to move on.</li>
+                <li className="border-l-2 border-[#16a34a] pl-3">Repair and buy electronics at the Juja desk.</li>
+              </ul>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {chips.map((chip) => (
+                  <li key={chip.href}>
+                    <Link
+                      href={chip.href}
+                      className="inline-flex rounded-full bg-[#dcfce7] px-4 py-2 text-sm font-semibold text-[#15803d] hover:bg-[#bbf7d0]"
+                    >
+                      {chip.label}
                     </Link>
-                  </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#f4fbf6] py-16 lg:py-24">
+          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#16a34a]">WHAT WE STAND FOR</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-5xl">Our values</h2>
+            </div>
+            <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {values.map((item) => (
+                <li key={item.mark} className="rounded-[1.5rem] bg-white p-6">
+                  <span className="grid size-9 place-items-center rounded-full bg-[#dcfce7] text-sm font-extrabold text-[#15803d]">
+                    {item.mark}
+                  </span>
+                  <h3 className="mt-5 text-lg font-extrabold text-[#0b1b16]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.copy}</p>
                 </li>
               ))}
             </ul>
           </div>
         </section>
 
-        <section className="mx-auto w-full max-w-[96rem] px-4 py-16 sm:px-6 lg:py-20">
-          <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE PATH</p>
-          <h2 className="mt-3 max-w-xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
-            What happens after you leave it with us.
-          </h2>
-          <ol className="mt-10 grid gap-6 md:grid-cols-4">
-            {pathSteps.map(([title, copy], index) => (
-              <li key={title} className="relative">
-                <span className="grid size-12 place-items-center rounded-full bg-[#22c55e] text-lg font-extrabold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="mt-4 text-lg font-extrabold text-[#0b1b16]">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{copy}</p>
-              </li>
-            ))}
-          </ol>
+        <AboutPath />
+        <AboutStats />
+
+        <section className="bg-[#f4fbf6] py-16 lg:py-24">
+          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#16a34a]">THE TEAM</p>
+              <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-5xl">
+                The people behind the desk
+              </h2>
+            </div>
+            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {team.map((person) => (
+                <li key={person.name} className="text-center">
+                  <div className="aspect-[4/5] rounded-[1.35rem] bg-[#c6f0d4]" aria-hidden="true" />
+                  <p className="mt-4 text-base font-extrabold text-[#0b1b16]">{person.name}</p>
+                  <p className="mt-1 text-sm text-slate-500">{person.role}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
-        <section className="px-4 pb-16 sm:px-6">
-          <ul className="mx-auto grid w-full max-w-[96rem] gap-3 rounded-[2rem] bg-[#123d2b] px-4 py-8 text-white sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-            {marks.map(([value, label]) => (
-              <li key={label} className="px-2 py-2">
-                <p className="text-3xl font-extrabold text-[#86efac]">{value}</p>
-                <p className="mt-1 text-sm text-white/75">{label}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <div className="pt-4">
+          <FinalCta />
+        </div>
       </main>
       <Home4Footer />
     </>

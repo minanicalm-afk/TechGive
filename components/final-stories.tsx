@@ -44,10 +44,16 @@ export function FinalStories() {
   return (
     <section id="stories" className="scroll-mt-24 bg-[#f4fbf6] py-16 lg:py-20">
       <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
-        <p className="text-center text-sm font-medium text-[#16a34a]">Testimonials</p>
-        <h2 className="mx-auto mt-3 max-w-md text-center text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
-          We care about the experience after the handoff
-        </h2>
+        <div className="text-center">
+          <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#16a34a]">
+            <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
+            TESTIMONIALS
+            <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
+          </p>
+          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-[2.7rem] lg:text-5xl">
+            We care about the experience after the handoff
+          </h2>
+        </div>
         <ul className="mt-16 grid gap-x-6 gap-y-16 sm:grid-cols-2 xl:grid-cols-4">
           {stories.map((story) => (
             <li key={story.label} className="relative rounded-[1.4rem] bg-white px-6 pt-14 pb-7 text-center shadow-[0_18px_40px_-24px_rgba(15,23,42,0.28)]">

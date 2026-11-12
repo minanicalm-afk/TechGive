@@ -38,7 +38,7 @@ export function PartnerCarousel() {
 
 export function PartnerStrip() {
   return (
-    <section className="bg-cream py-12 sm:py-16" aria-label="Partners">
+    <section className="border-y border-[#e7efe9] bg-white py-12 sm:py-16" aria-label="Partners">
       <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
         <PartnerCarousel />
       </div>
