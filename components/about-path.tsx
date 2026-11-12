@@ -54,22 +54,22 @@ export function AboutPath() {
   const play = active || reduce;
 
   return (
-    <section ref={sectionRef} className="bg-[#050807] py-16 text-white lg:py-24">
+    <section ref={sectionRef} className="overflow-x-hidden bg-[#f4fbf6] py-16 lg:py-24">
       <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#4ade80]">
-            <span className="h-px w-10 bg-[#4ade80]" aria-hidden="true" />
+          <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#16a34a]">
+            <span className="h-px w-10 bg-[#16a34a]" aria-hidden="true" />
             THE PATH
-            <span className="h-px w-10 bg-[#4ade80]" aria-hidden="true" />
+            <span className="h-px w-10 bg-[#16a34a]" aria-hidden="true" />
           </p>
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-5xl">
-            The journey of a <span className="text-[#3dff6a]">machine.</span>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-5xl">
+            The journey of a machine.
           </h2>
         </div>
 
-        <div className="relative mx-auto mt-16 max-w-4xl">
+        <div className="relative mx-auto mt-16 max-w-4xl overflow-x-hidden">
           <motion.div
-            className="absolute top-3 bottom-8 left-[15px] w-px origin-top bg-[#22c55e] md:left-1/2 md:-translate-x-1/2"
+            className="absolute top-3 bottom-8 left-[15px] w-px origin-top bg-[#16a34a] md:left-1/2 md:-translate-x-1/2"
             initial={{ scaleY: reduce ? 1 : 0 }}
             animate={{ scaleY: play ? 1 : 0 }}
             transition={{ duration: 1.15, ease: easeOut }}
@@ -82,21 +82,21 @@ export function AboutPath() {
               return (
                 <li key={step.mark} className="relative md:grid md:grid-cols-2 md:items-start">
                   <motion.span
-                    className="absolute top-8 left-[15px] z-10 size-3.5 -translate-x-1/2 rounded-full border-[3px] border-[#050807] bg-[#22c55e] md:left-1/2"
+                    className="absolute top-8 left-[15px] z-10 size-3.5 -translate-x-1/2 rounded-full border-[3px] border-[#f4fbf6] bg-[#22c55e] md:left-1/2"
                     initial={{ scale: reduce ? 1 : 0 }}
                     animate={{ scale: play ? 1 : 0 }}
                     transition={{ duration: 0.35, delay: reduce ? 0 : 0.18 + index * 0.14, ease: easeOut }}
                     aria-hidden="true"
                   />
                   <motion.article
-                    className={`ml-10 md:ml-0 ${left ? "md:col-start-1 md:pr-14" : "md:col-start-2 md:pl-14"}`}
-                    initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : left ? -48 : 48, y: reduce ? 0 : 16 }}
-                    animate={play ? { opacity: 1, x: 0, y: 0 } : undefined}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    className={`ml-10 w-[calc(100%-2.5rem)] md:ml-0 md:w-auto ${left ? "md:col-start-1 md:pr-14" : "md:col-start-2 md:pl-14"}`}
+                    initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
+                    animate={play ? { opacity: 1, y: 0 } : undefined}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.55, delay: reduce ? 0 : 0.12 + index * 0.14, ease: easeOut }}
                   >
-                    <div className="rounded-[1.35rem] bg-white p-6 text-[#0b1b16] shadow-[0_0_0_6px_rgba(34,197,94,0.22)]">
+                    <div className="rounded-[1.35rem] bg-white p-6 text-[#0b1b16] shadow-[0_18px_40px_-28px_rgba(15,23,42,0.45)]">
                       <p className="inline-flex rounded-full bg-[#e7f8ed] px-2.5 py-0.5 text-[11px] font-bold tracking-[0.18em] text-[#15803d]">
                         {step.mark}
                       </p>
@@ -110,21 +110,21 @@ export function AboutPath() {
 
             <li className="relative md:grid md:grid-cols-2">
               <motion.span
-                className="absolute top-8 left-[15px] z-10 size-3.5 -translate-x-1/2 rounded-full border-[3px] border-[#050807] bg-[#22c55e] md:left-1/2"
+                className="absolute top-8 left-[15px] z-10 size-3.5 -translate-x-1/2 rounded-full border-[3px] border-[#f4fbf6] bg-[#22c55e] md:left-1/2"
                 initial={{ scale: reduce ? 1 : 0 }}
                 animate={{ scale: play ? 1 : 0 }}
                 transition={{ duration: 0.35, delay: reduce ? 0 : 0.74, ease: easeOut }}
                 aria-hidden="true"
               />
               <motion.article
-                className="ml-10 md:col-start-2 md:ml-0 md:pl-14"
-                initial={{ opacity: reduce ? 1 : 0, x: reduce ? 0 : 48, y: reduce ? 0 : 16 }}
-                animate={play ? { opacity: 1, x: 0, y: 0 } : undefined}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                className="ml-10 w-[calc(100%-2.5rem)] md:col-start-1 md:ml-0 md:w-auto md:pr-14"
+                initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 }}
+                animate={play ? { opacity: 1, y: 0 } : undefined}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.55, delay: reduce ? 0 : 0.68, ease: easeOut }}
               >
-                <div className="rounded-[1.35rem] bg-white p-6 text-[#0b1b16] shadow-[0_0_0_6px_rgba(34,197,94,0.22)]">
+                <div className="rounded-[1.35rem] bg-white p-6 text-[#0b1b16] shadow-[0_18px_40px_-28px_rgba(15,23,42,0.45)]">
                   <p className="inline-flex rounded-full bg-[#e7f8ed] px-2.5 py-0.5 text-[11px] font-bold tracking-[0.18em] text-[#15803d]">
                     NEXT
                   </p>
