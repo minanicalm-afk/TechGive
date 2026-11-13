@@ -35,25 +35,25 @@ export default function DonationsPage() {
             <Link href="#note" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
               Prepare the donation note
             </Link>
-            <Link href="/contact" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
-              Ask about a drop-off
+            <Link href="/programs" className="inline-flex items-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10">
+              Support a listed program
             </Link>
           </div>
         </Home4Banner>
 
         <section className="mx-auto w-full max-w-[96rem] px-4 py-16 sm:px-6 lg:py-20">
-          <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">WHAT A DONATION IS</p>
+          <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">WHAT WE TAKE AND WHO WE GIVE TO</p>
           <h2 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-balance text-[#0b1b16] sm:text-4xl">
-            A computer we repair, then give to a school.
+            Working or repairable machines, given to schools and listed programs.
           </h2>
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
-            You leave a working or repairable machine. We log it in your name, fix what it needs, and place the finished computer with a less privileged school. It does not go back on the shop floor.
+            We take laptops, desktops, monitors, and TVs that can still serve. We give the finished machines to less privileged schools and to activities listed on the programs page. Cash and listed items for those activities are supported on the program, not here.
           </p>
           <ul className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              ["Who can leave one", "A person or an organisation. One laptop is enough. A company lot of working machines is welcome too."],
-              ["What to hand over", "The computer, and a note of whether it powers on. A missing charger is fine. Drop it in Juja, or ask us to collect it."],
-              ["What the bench does", "The note stays with the machine. We clean and repair it, then give it to a school for study or a class."],
+              ["What we take", "Laptops, desktops, monitors, and TVs. A missing charger is fine. Dead loads that cannot be repaired are e-waste, not a donation."],
+              ["Who we give to", "Less privileged schools, and organisations that have a slot on the programs page. Public cards show the name and the need only."],
+              ["Where it can go", "Leave the placement to the desk, or name a school or organisation. Say if you want to stay anonymous or if a shout-out is fine."],
             ].map(([title, copy]) => (
               <li key={title} className="rounded-[1.4rem] bg-[#f4fbf6] p-6">
                 <h3 className="text-lg font-extrabold text-[#0b1b16]">{title}</h3>
@@ -117,6 +117,21 @@ export default function DonationsPage() {
                   ))}
                 </ol>
               </aside>
+            </div>
+          </div>
+        </section>
+
+        <section id="request" className="scroll-mt-24 bg-white py-14 lg:py-20">
+          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+            <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">REQUEST A PROGRAM SLOT</p>
+            <h2 className="mt-3 max-w-2xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+              A school or organisation can ask to be listed.
+            </h2>
+            <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-600">
+              If the request is accepted, the programs page shows the name and the need only — for example ABC School, need of a Projector. Planning contacts stay with the desk.
+            </p>
+            <div className="mt-10 max-w-3xl rounded-[2rem] border border-slate-200 bg-[#f4fbf6] p-6 sm:p-8">
+              <PathForm kind="request" tone="home" />
             </div>
           </div>
         </section>

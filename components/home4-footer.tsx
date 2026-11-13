@@ -7,7 +7,7 @@ const columns = [
     title: "Quick Links",
     items: [
       ["Home", "/"],
-      ["Our Services", "/#services"],
+      ["Community Impact", "/#services"],
       ["Our Impact", "/#impact"],
       ["About Us", "/about"],
     ],
@@ -15,18 +15,19 @@ const columns = [
   {
     title: "Services",
     items: [
-      ["Donate Devices", "/donations"],
+      ["Electronic donations", "/donations"],
+      ["E-waste management", "/recycling"],
+      ["IT asset recovery", "/upgrades"],
       ["Sell Electronics", "/sell"],
-      ["Repairs", "/repair"],
-      ["Recycling", "/recycling"],
     ],
   },
   {
     title: "Support",
     items: [
+      ["Programs", "/programs"],
       ["FAQ", "/faq"],
+      ["Brochure", "/brochure"],
       ["Contact", "/contact"],
-      ["WhatsApp", "/contact"],
     ],
   },
 ] as const;

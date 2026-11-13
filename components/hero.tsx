@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeroFacts } from "@/components/hero-facts";
+import { HeroFlow, HeroStage } from "@/components/hero-flow";
 import { Button } from "@/components/ui/button";
 import { shell } from "@/lib/ui";
 
@@ -24,19 +26,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
   return (
     <>
     <section className={`relative overflow-hidden text-cream ${motion ? "hero-motion" : "bg-ink"}`}>
-      {motion ? (
-        <div className="pointer-events-none absolute inset-0">
-          <Image
-            src="/hero-ring.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-right"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#050807] from-0% via-[#050807]/70 via-[32%] to-transparent to-[62%]" />
-        </div>
-      ) : image ? (
+      {image && !motion ? (
         <>
           <svg className="absolute size-0" aria-hidden="true">
             <filter id="hero-no-white" colorInterpolationFilters="sRGB">
@@ -67,18 +57,21 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
             />
           </div>
         </>
-      ) : (
+      ) : !motion ? (
         <>
           <div className="hero-glow pointer-events-none absolute inset-0" />
           <div className="hero-dots pointer-events-none absolute inset-0" />
         </>
-      )}
+      ) : null}
 
+      <HeroFrame motion={motion}>
       <div
         className={
-          scenic
-            ? "relative z-10 mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-center px-4 pt-28 pb-20 sm:px-6 lg:pt-32 lg:pb-24"
-            : "relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-24 text-center sm:px-8 lg:pt-40 lg:pb-28"
+          motion
+            ? "relative z-10 mx-auto grid min-h-[36rem] w-full max-w-[96rem] items-center gap-8 px-4 pt-28 pb-24 sm:px-6 lg:grid-cols-[minmax(0,1fr)_26rem] lg:pt-32 lg:pb-28"
+            : scenic
+              ? "relative z-10 mx-auto flex min-h-[36rem] w-full max-w-[96rem] flex-col justify-center px-4 pt-28 pb-20 sm:px-6 lg:pt-32 lg:pb-24"
+              : "relative z-10 mx-auto w-full max-w-3xl px-5 pt-32 pb-24 text-center sm:px-8 lg:pt-40 lg:pb-28"
         }
       >
         <div>
@@ -106,13 +99,13 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
           <h1
             className={
               scenic
-                ? "mt-6 max-w-5xl font-sans text-[2.6rem] font-extrabold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-7xl"
+                ? "mt-6 max-w-xl font-sans text-[2.6rem] font-extrabold leading-[0.95] tracking-tight text-white sm:text-6xl lg:text-6xl"
                 : "mt-5 font-serif text-[3.15rem] leading-[0.98] tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.4rem]"
             }
           >
             {scenic ? (
               <>
-                <span className="block sm:whitespace-nowrap">
+                <span className="block">
                   Give <span className="text-[#3dff6a] [text-shadow:0_0_24px_rgba(61,255,106,0.55)]">technology</span>
                 </span>
                 <span className="block">a second life.</span>
@@ -163,6 +156,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
             )}
           </div>
         </div>
+        {motion ? <HeroFlow /> : null}
         {image && !motion ? (
           <div className="relative h-80 sm:h-96 lg:hidden">
             <Image
@@ -177,6 +171,7 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
         ) : null}
 
       </div>
+      </HeroFrame>
 
       {scenic ? (
         <svg viewBox="0 0 1440 90" className="absolute right-0 bottom-0 left-0 z-10 h-16 w-full sm:h-20" preserveAspectRatio="none" aria-hidden="true">
@@ -207,6 +202,10 @@ export function Hero({ image, motion = false }: { image?: string; motion?: boole
     )}
     </>
   );
+}
+
+function HeroFrame({ motion, children }: { motion: boolean; children: ReactNode }) {
+  return motion ? <HeroStage>{children}</HeroStage> : children;
 }
 
 function FeatureIcon({ name }: { name: (typeof features)[number]["icon"] }) {

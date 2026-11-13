@@ -71,6 +71,19 @@ const groups = [
     ],
   },
   {
+    title: "Programs & brochure",
+    items: [
+      {
+        q: "Where do I support an activity?",
+        a: "On the programs page. Pick the activity, then donate cash, provide the listed item, or join the planning group. Public cards show the name and the need only.",
+      },
+      {
+        q: "How do I download the brochure?",
+        a: "Open the brochure page and use Download / print brochure. It shows what the work has been and the programs listed for this period.",
+      },
+    ],
+  },
+  {
     title: "The desk & organisations",
     items: [
       {
@@ -158,6 +171,21 @@ export default function FaqPage() {
                 </ul>
               </section>
             ))}
+          </div>
+        </section>
+
+        <section id="brochure" className="scroll-mt-24 px-4 pb-10 sm:px-6">
+          <div className="mx-auto flex w-full max-w-[96rem] flex-col items-start justify-between gap-6 rounded-[2rem] bg-[#071a12] px-6 py-10 text-white sm:px-10 lg:flex-row lg:items-center">
+            <div>
+              <p className="text-xs font-bold tracking-[0.22em] text-[#86efac]">BROCHURE</p>
+              <h2 className="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">What we have done, on one page.</h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/80">
+                Download or print the brochure. It lists the work over time and the programs for this period.
+              </p>
+            </div>
+            <Link href="/brochure" className="inline-flex shrink-0 items-center rounded-full bg-[#22c55e] px-5 py-3 text-sm font-semibold text-white hover:bg-[#16a34a]">
+              Download brochure
+            </Link>
           </div>
         </section>
 

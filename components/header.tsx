@@ -6,17 +6,18 @@ import { usePathname, useRouter } from "next/navigation";
 import { ActionLink } from "@/components/action-link";
 import { Logo } from "@/components/logo";
 import { Arrow } from "@/components/techgive-ui";
-import { messages, nav, themedPaths } from "@/lib/site";
+import { isThemedPath, messages, nav } from "@/lib/site";
 import { shell } from "@/lib/ui";
 
 const finalServices = [
-  { href: "/donations", label: "Donations" },
-  { href: "/recycling", label: "Collection for Recycling" },
-  { href: "/upgrades", label: "System Upgrades" },
+  { href: "/donations", label: "Electronic donation programs" },
+  { href: "/recycling", label: "E-waste management" },
+  { href: "/upgrades", label: "IT asset disposal and recovery" },
   { href: "/sell", label: "Sell to Us" },
 ] as const;
 
 const finalNav = [
+  { href: "/programs", label: "Programs" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
@@ -50,7 +51,7 @@ export function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const pendingScroll = useRef<string | null>(null);
-  const onFinal = themedPaths.includes(pathname as (typeof themedPaths)[number]);
+  const onFinal = isThemedPath(pathname);
   const solid = scrolled || open;
   const linkClass = solid ? "text-ink-soft hover:text-ink" : "text-cream/80 hover:text-cream";
 
@@ -153,7 +154,7 @@ export function Header() {
         <div className="hidden lg:block">
           {onFinal ? (
             <a
-              href="/#get-started"
+              href="/programs"
               className="inline-flex items-center gap-2 rounded-full bg-[#22c55e] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_18px_-10px_rgba(22,163,74,0.9)] hover:bg-[#16a34a]"
             >
               Get Involved <Arrow />
@@ -228,7 +229,7 @@ export function Header() {
             <div className="pt-5">
               {onFinal ? (
                 <a
-                  href="/#get-started"
+                  href="/programs"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#22c55e] px-4 py-3 text-sm font-semibold text-white"
                   onClick={() => setOpen(false)}
                 >

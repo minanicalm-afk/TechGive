@@ -9,7 +9,7 @@ export function Logo({ light = false }: { light?: boolean }) {
           TechGive
         </span>
         <span className={`mt-0.5 block text-[10px] font-medium ${light ? "text-cream/65" : "text-ink-soft"}`}>
-          Donate · Repair · Reuse · Empower
+          Donate · Recycle · Re-use · Empower
         </span>
       </span>
     </span>

@@ -13,26 +13,26 @@ export default function RecyclingPage() {
       image="/final-hero.jpg"
       imageAlt="A recycling mark made from computer circuit boards"
       imageRight
-      eyebrow="COLLECTION FOR RECYCLING"
+      eyebrow="E-WASTE MANAGEMENT"
       title={
         <>
-          Dead electronics,
-          <span className="mt-1 block text-[#86efac]">collected and finished properly.</span>
+          Recycling, collection,
+          <span className="mt-1 block text-[#86efac]">and disposal — at the right level.</span>
         </>
       }
-      text="Broken boards, dead computers, and equipment that will not power on are a paid collection. We do not buy them. What cannot be repaired is recycled."
+      text="Corporate, small business, and individual loads. Working laptops, desktops, monitors, and TVs can be given as donations during a collection. We dispose of all electronics that cannot be recovered."
       primary={{ href: "#pickup", label: "Schedule a pickup" }}
       secondary={{ href: "/contact", label: "Describe the load" }}
-      storyTitle="This is disposal, not a buyback."
+      storyTitle="Three levels of the same work."
       story={[
-        "If a machine cannot be repaired, it does not go to a school and it is not bought. It is taken apart for parts that still serve other computers, or sent for responsible recycling.",
-        "Collection of dead equipment is paid. We travel when there are 20 pieces or more. Smaller loads can be brought to the Juja shop.",
+        "Corporate, small business, and individual collections all go through recycling, collection, and disposal. The load size and the fee are agreed before we travel.",
+        "During a collection, organisations can also give working laptops, desktops, monitors, and TVs as donations. Those machines leave the e-waste line and follow the donation path. What we dispose of is all electronics that cannot be recovered.",
       ]}
       points={[
-        "Dead computers, parts, and other e-waste",
-        "A fee for collection, confirmed before we travel",
-        "We travel for 20 pieces or more",
-        "Juja drop-off for a smaller load",
+        "Corporate, small business, and individual",
+        "Recycling, collection, and disposal",
+        "Donatable on collection: laptops, desktops, monitors, TVs",
+        "Disposal covers all electronics",
       ]}
       stepsTitle="How a collection is arranged."
       steps={[
@@ -42,6 +42,21 @@ export default function RecyclingPage() {
       ]}
       note="A single dead laptop can come to the Juja desk. A van is for a larger clear-out."
       form={
+        <>
+        <section className="bg-white px-4 py-12 sm:px-6">
+          <div className="mx-auto grid w-full max-w-[96rem] gap-4 md:grid-cols-3">
+            {[
+              ["Corporate", "Fleet clear-outs and mixed e-waste. Donation of working laptops, desktops, monitors, and TVs can be logged on the same visit."],
+              ["Small business", "Shop and office loads. Collection is paid when the equipment is dead. Working machines can still be donated."],
+              ["Individual", "A home load. A small number of pieces can come to Juja. A van is for a larger clear-out."],
+            ].map(([title, copy]) => (
+              <article key={title} className="rounded-[1.6rem] bg-[#f4fbf6] p-6">
+                <h3 className="text-lg font-extrabold text-[#0b1b16]">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
         <section id="pickup" className="scroll-mt-24 bg-[#f4fbf6] py-14 lg:py-20">
           <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
             <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">THE COLLECTION NOTE</p>
@@ -70,6 +85,7 @@ export default function RecyclingPage() {
             </div>
           </div>
         </section>
+        </>
       }
     />
   );

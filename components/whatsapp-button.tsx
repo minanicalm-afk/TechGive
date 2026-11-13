@@ -13,7 +13,7 @@ export function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Josachi on WhatsApp"
-      className="wa-float fixed right-[max(1.25rem,env(safe-area-inset-right))] bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 inline-flex items-center gap-2.5 rounded-full bg-ink py-2 pr-2 pl-4 text-sm font-medium text-cream shadow-[0_18px_40px_-16px_rgba(18,33,27,0.7)]"
+      className="wa-float fixed right-[max(1.25rem,env(safe-area-inset-right))] bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-50 inline-flex items-center gap-2.5 rounded-full bg-ink py-2 pr-2 pl-4 text-sm font-medium text-cream shadow-[0_18px_40px_-16px_rgba(18,33,27,0.7)] lg:bottom-[calc(5.25rem+env(safe-area-inset-bottom))]"
     >
       WhatsApp
       <span className="relative grid size-11 place-items-center">

@@ -53,7 +53,13 @@ export const themedPaths = [
   "/upgrades",
   "/sell",
   "/contact",
+  "/programs",
+  "/brochure",
 ] as const;
+
+export function isThemedPath(pathname: string) {
+  return themedPaths.some((path) => pathname === path || pathname.startsWith(`${path}/`));
+}
 
 export const nav = [
   { href: "/donations", label: "Donate" },

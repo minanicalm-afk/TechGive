@@ -7,7 +7,7 @@ const devices = ["Laptop", "Desktop / CPU", "Server", "TV", "Printer", "Scanner"
   label,
 }));
 
-type PathFormKind = "donate" | "dispose" | "upgrade" | "ask";
+type PathFormKind = "donate" | "dispose" | "upgrade" | "ask" | "request";
 
 const forms: Record<
   PathFormKind,
@@ -40,6 +40,21 @@ const forms: Record<
         ],
       },
       { name: "location", label: "Location", type: "text", required: true },
+      {
+        name: "recipient",
+        label: "Who should receive this (school or organisation). Leave blank if we should place it.",
+        type: "text",
+      },
+      {
+        name: "shout",
+        label: "Recognition",
+        type: "select",
+        required: true,
+        options: [
+          { value: "Stay anonymous", label: "Stay anonymous" },
+          { value: "Shout-out is fine", label: "Shout-out is fine" },
+        ],
+      },
       { name: "note", label: "Anything the bench should know", type: "textarea" },
     ],
     buildMessage: (values) => {
@@ -52,6 +67,10 @@ const forms: Record<
         `What it is: ${values.device}`,
         `Condition: ${values.condition}`,
         `Location: ${values.location?.trim()}`,
+        values.recipient?.trim()
+          ? `Direct this donation to: ${values.recipient.trim()}`
+          : "Place this donation where it is needed.",
+        `Recognition: ${values.shout}`,
       ];
       if (values.note?.trim()) lines.push(`Note: ${values.note.trim()}`);
       return lines.join("\n");
@@ -158,6 +177,36 @@ const forms: Record<
         `What the computer needs to do: ${values.need?.trim()}`,
         `Town: ${values.town?.trim()}`,
       ].join("\n"),
+  },
+  request: {
+    submitLabel: "Request a program slot",
+    doneTitle: "The request is ready.",
+    doneText: "Send it on WhatsApp. If the request is accepted, the public programs page will show the organisation name and the listed need only.",
+    fields: [
+      { name: "name", label: "Your name", type: "text", required: true, half: true },
+      { name: "role", label: "Your role (kept off the public page)", type: "text", required: true, half: true },
+      { name: "organisation", label: "School or organisation name", type: "text", required: true },
+      { name: "phone", label: "WhatsApp number", type: "tel", required: true, half: true },
+      { name: "email", label: "Email", type: "email", required: true, half: true },
+      { name: "need", label: "What is needed (this is what the public page will show)", type: "text", required: true },
+      { name: "town", label: "Town", type: "text", required: true },
+      { name: "note", label: "Anything else for planning", type: "textarea" },
+    ],
+    buildMessage: (values) =>
+      [
+        "Hello Josachi, we would like a slot on the programs page for a donation request.",
+        "",
+        `Name: ${values.name?.trim()}`,
+        `Role (not for the public page): ${values.role?.trim()}`,
+        `School or organisation: ${values.organisation?.trim()}`,
+        `WhatsApp: ${values.phone?.trim()}`,
+        `Email: ${values.email?.trim()}`,
+        `Public need: ${values.need?.trim()}`,
+        `Town: ${values.town?.trim()}`,
+        values.note?.trim() ? `Note: ${values.note.trim()}` : "",
+      ]
+        .filter(Boolean)
+        .join("\n"),
   },
 };
 

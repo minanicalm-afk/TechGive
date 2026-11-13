@@ -48,7 +48,7 @@ export default function UpgradesPage() {
               <span className="mt-1 block text-[#86efac]">Keep the value of what you already own.</span>
             </>
           }
-          text="We buy the laptops and desktops your school or organisation is leaving behind, and put that value towards a newer generation of the same kind. You only top up the difference."
+          text="IT asset disposal and recovery: system upgrades, recovery, testing, sorting, and reuse of functional equipment from components. Secure data destruction when an organisation needs the drive gone."
         >
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="#request" className="inline-flex items-center rounded-full bg-[#22c55e] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#16a34a]">
@@ -61,6 +61,30 @@ export default function UpgradesPage() {
         </Home4Banner>
 
         <UpgradeSwap />
+
+        <section className="bg-white py-16 lg:py-20">
+          <div className="mx-auto w-full max-w-[96rem] px-4 sm:px-6">
+            <p className="text-xs font-bold tracking-[0.18em] text-[#16a34a]">DISPOSAL AND RECOVERY</p>
+            <h2 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-4xl">
+              Upgrade, recover, test, sort, and reuse.
+            </h2>
+            <ul className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {[
+                ["System upgrades", "Hand in the generation you have. Move to a newer generation of the same kind."],
+                ["Recovery", "Working machines and parts are pulled from the lot before anything is scrapped."],
+                ["Testing and sorting", "Each unit is tested. Functional equipment is separated from waste."],
+                ["Reuse from components", "Boards and parts that still work go into refurbished machines."],
+                ["Upgrade and refurbishment", "The bench upgrades what can still serve, then places or returns it as agreed."],
+                ["Secure data destruction", "When an organisation needs complete destruction of data, the drive is wiped or destroyed. Data recovery is not promised."],
+              ].map(([title, copy]) => (
+                <li key={title} className="rounded-[1.6rem] bg-[#f4fbf6] p-6">
+                  <h3 className="text-lg font-extrabold text-[#0b1b16]">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{copy}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         <section className="bg-[#f4fbf6] py-16 lg:py-20">
           <div className="mx-auto grid w-full max-w-[96rem] gap-4 px-4 sm:grid-cols-2 sm:px-6 xl:grid-cols-4">

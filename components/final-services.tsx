@@ -5,57 +5,57 @@ const services = [
   {
     id: "donations",
     index: "01",
-    title: "Device Donations",
-    copy: "Leave a usable computer. We repair it and give the finished machine to a less privileged school.",
+    title: "Donations",
+    copy: "Working or repairable machines are repaired and given to schools. Cash and listed items go through the programs page.",
     cta: "Donate",
     href: "/donations",
     image: "/home-impact.jpg",
-    alt: "A student using a laptop at a classroom desk",
+    alt: "A student using a donated laptop in class",
     position: "center 30%",
   },
   {
-    id: "recycling",
+    id: "sponsor-testimonials",
     index: "02",
-    title: "Collection & Recycling",
-    copy: "We collect broken or unwanted equipment. The fee, when there is one, is agreed before we travel.",
-    cta: "Ask about a collection",
+    title: "Sponsor testimonials",
+    copy: "People and organisations who have handed machines over say what happened after the visit.",
+    cta: "Read testimonials",
+    href: "/#stories",
+    image: "/impact/impact-sponsors.jpg",
+    alt: "Partners talking through a donation at a table",
+    position: "center 40%",
+  },
+  {
+    id: "community-engagement",
+    index: "03",
+    title: "Community engagement",
+    copy: "Race days, tree planting, and school slots sit on the programs page. Join the group that plans the day.",
+    cta: "See programs",
+    href: "/programs",
+    image: "/impact/impact-community.jpg",
+    alt: "A community planting seedlings together",
+    position: "center 45%",
+  },
+  {
+    id: "environmental-engagement",
+    index: "04",
+    title: "Environmental engagement",
+    copy: "Dead electronics are collected, recycled, or disposed of. Working parts stay in service. Neighbourhoods keep dumps clear of e-waste.",
+    cta: "E-waste path",
     href: "/recycling",
-    image: "/services/recycle.jpg",
-    alt: "A pile of old monitors and desktop computers",
+    image: "/impact/impact-environment.jpg",
+    alt: "Circuit boards and computer parts sorted for recycling",
     position: "center center",
   },
   {
-    id: "upgrades",
-    index: "03",
-    title: "System Upgrades",
-    copy: "An organisation hands in the machines it has outgrown. We supply a newer generation of the same kind.",
-    cta: "Plan an upgrade",
-    href: "/upgrades",
-    image: "/services/upgrade.jpg",
-    alt: "Office computers stacked and wrapped for collection",
-    position: "center 70%",
-  },
-  {
-    id: "sell",
-    index: "04",
-    title: "Sell Your Electronics",
-    copy: "Send the details and photos. The first figure is an estimate until the desk inspects the machine.",
-    cta: "Get an estimate",
-    href: "/sell",
-    image: "/services/shop.jpg",
-    alt: "Laptops on the counter of a computer shop",
-    position: "32% 68%",
-  },
-  {
-    id: "repair",
+    id: "digital-divide",
     index: "05",
-    title: "Computer Repair",
-    copy: "The Juja shop sells computers and takes hardware and software faults. Data recovery is not promised.",
-    cta: "Book a repair",
-    href: "/repair",
-    image: "/services/opened.jpg",
-    alt: "A laptop opened on a workbench, showing the board and memory",
-    position: "58% 28%",
+    title: "Digital divide and sensitization",
+    copy: "Placed computers go into class. Schools and students learn what the machines can do, not only that they arrived.",
+    cta: "How placement works",
+    href: "/donations",
+    image: "/impact/impact-digital.jpg",
+    alt: "Students in a computer class with a teacher",
+    position: "center 40%",
   },
 ] as const;
 
@@ -69,14 +69,14 @@ export function FinalServices() {
         <div className="text-center">
           <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.22em] text-[#16a34a]">
             <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
-            OUR SERVICES
+            COMMUNITY IMPACT
             <span className="h-px w-10 bg-[#16a34a] sm:w-14" aria-hidden="true" />
           </p>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#0b1b16] sm:text-[2.7rem]">
-            Comprehensive <span className="text-[#16a34a]">Electronics Solutions</span>
+            How the work <span className="text-[#16a34a]">reaches people</span>
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm text-slate-600 sm:text-base">
-            From donations to upgrades, we&apos;ve got you covered. Together, let&apos;s give technology a longer, greater purpose.
+            Donations, sponsor voices, community days, e-waste, and digital access. Each card is a different way the desk shows up.
           </p>
         </div>
 
@@ -90,9 +90,6 @@ export function FinalServices() {
             <ServicePanel key={card.id} card={card} wide />
           ))}
         </div>
-        <p className="mt-4 text-center text-xs leading-relaxed text-slate-500">
-          Computer shop by Adamrabah, CC BY-SA 4.0. Office machines by Jemimus, CC BY 2.0. Monitor pile: public domain.
-        </p>
       </div>
     </section>
   );
